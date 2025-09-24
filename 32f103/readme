@@ -1,0 +1,4 @@
+motor1 :
+TIM3 CH1
+IN1 PA0
+IN2 PA1
