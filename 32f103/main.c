@@ -6,11 +6,22 @@
 
 Motor_HandleTypeDef motor1, motor2;
 HCSR04_HandleTypeDef hcsr04;
+/**
+ * @brief  初始化超声波模块结构体
+ */
+void Hcsr04_Init(void)
+{
+	hcsr04.TIMx = TIM2;
+	hcsr04.ECHO_GPIOx = GPIOA;
+	hcsr04.ECHO_GPIO_Pin = GPIO_Pin_4;
+	hcsr04.TRIG_GPIOx = GPIOA;
+	hcsr04.TRIG_GPIO_Pin = GPIO_Pin_5;
+	
+	HCSR04_Init(&hcsr04);
+}
 
 /**
  * @brief  初始化电机1结构体
- * @param  无
- * @retval 无
  */
 void Motor1_Init(void) {
     motor1.TIMx = TIM3;
@@ -19,6 +30,8 @@ void Motor1_Init(void) {
     motor1.IN1_GPIO_Pin = GPIO_Pin_0;
     motor1.IN2_GPIOx = GPIOA;
     motor1.IN2_GPIO_Pin = GPIO_Pin_1;
+	motor1.dir = MOTOR_FORWARD;
+	motor1.speed = 30;
     Motor_Init(&motor1);
 }
 
@@ -34,21 +47,28 @@ void Motor2_Init(void) {
     motor2.IN1_GPIO_Pin = GPIO_Pin_2;
     motor2.IN2_GPIOx = GPIOA;
     motor2.IN2_GPIO_Pin = GPIO_Pin_3;
+	motor2.dir = MOTOR_FORWARD;
+	motor2.speed = 30;
     Motor_Init(&motor2);
 }
 
 int main()
 {
 	char buf[128];
+	Hcsr04_Init();
 	Motor1_Init();
 	Motor2_Init();
-	Motor_Init(&motor1);
-	Motor_Init(&motor2);
 	
 	uart_init(115200);
 	
+	Motor_Start(&motor1);
+	Motor_Start(&motor2);
+	
 	while(1){
-		if(flag2){}
+		
+		if(flag2){
+			
+		}
 		if(flag3){}
 		if(flag4){}
 		if(flag5){}

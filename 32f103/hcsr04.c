@@ -62,10 +62,11 @@ void HCSR04_Init(HCSR04_HandleTypeDef* hcsr04) {
  */
 uint8_t HCSR04_Measure(HCSR04_HandleTypeDef* hcsr04) {
     uint32_t start_time, end_time, duration;
+	uint32_t i;
     
     // 发送10us触发脉冲
     GPIO_SetBits(hcsr04->TRIG_GPIOx, hcsr04->TRIG_GPIO_Pin);
-    for (uint32_t i = 0; i < 720; i++) __NOP();  // 约10us延时
+    for (i = 0; i < 720; i++) __NOP();  // 约10us延时
     GPIO_ResetBits(hcsr04->TRIG_GPIOx, hcsr04->TRIG_GPIO_Pin);
     
     // 等待ECHO上升沿

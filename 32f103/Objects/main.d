@@ -21,3 +21,4 @@
 .\objects\main.o: uart.h
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: hcsr04.h
