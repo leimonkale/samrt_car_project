@@ -3,6 +3,11 @@
 
 
 //PA9-USART1_TX 复用推挽输出     PA10-USART1_RX 浮空输入
+/**
+ * @brief  初始化串口
+ * @param  波特率
+ * @retval 无
+ */
 void uart_init(int BaudRate)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -46,7 +51,11 @@ void uart_init(int BaudRate)
 }
 
 
-
+/**
+ * @brief  串口发送字符
+ * @param  单个字符
+ * @retval 无
+ */
 void uart_send_byte(char data)
 {
 	USART_SendData(USART1, data);
@@ -54,6 +63,11 @@ void uart_send_byte(char data)
 	while(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);	
 }
 
+/**
+ * @brief  串口发送字符串
+ * @param  字符串
+ * @retval 无
+ */
 void uart_send_str(char *str)
 {
 	while(*str != '\0')
@@ -65,6 +79,11 @@ void uart_send_str(char *str)
 
 //魔法棒图标(options) -> target -> 勾选USE MicroLIB
 //printf -> fputc -> uart_send_byte
+/**
+ * @brief  重写输出流
+ * @param  整型，输出流
+ * @retval 无
+ */
 int fputc(int c, FILE * stream)
 {
 	uart_send_byte(c);

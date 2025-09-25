@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Smart Car Project: uart.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Smart Car Project<span id="projectnumber">&#160;v0.1.7</span>
+   </div>
+   <div id="projectbrief">STM32F103-based smart car control system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('uart_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">uart.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="uart_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __UART_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __UART_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#aeaec577a45a60c5a5d99ea4d44898075">flag2</a> ;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#a09c08a857a3574a7aae52d8cf4f8c384">flag3</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#aea72e241c700c39ee7d2e16696f16fcf">flag4</a> ;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#a042c180616c014e91d82bab9b47c0290">flag5</a> ;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#ac5f4d14af23b5194a6483bea010f2ea7">flag6</a> ;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">extern</span> <span class="keyword">volatile</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="uart_8c.html#af15b132d76e1db350c4c51ba440df429">flag7</a> ;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keywordtype">void</span> <a class="code hl_function" href="uart_8h.html#ae8ca773c338f9e90fed5eeb81fc64a7f">uart_init</a>(<span class="keywordtype">int</span> BaudRate);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keywordtype">void</span> <a class="code hl_function" href="uart_8h.html#a4c807af15160395508dd6069ceacc239">uart_send_byte</a>(<span class="keywordtype">char</span> data);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> <a class="code hl_function" href="uart_8h.html#a1039f80b9e4096f21c36745da1262d31">uart_send_str</a>(<span class="keywordtype">char</span> *str);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_function" href="uart_8h.html#a2578a320d89c6a636bf2bdaf57cc1580">uart_recv_byte</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="uart_8h.html#ab17f9fef41d32b6a1021eb1520659218">uart_get_recvbuf</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="uart_8c.html#ac72e2732d23d7d9657647ac406c539f3">buf</a>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="auart_8c_html_a042c180616c014e91d82bab9b47c0290"><div class="ttname"><a href="uart_8c.html#a042c180616c014e91d82bab9b47c0290">flag5</a></div><div class="ttdeci">volatile int flag5</div><div class="ttdef"><b>定义</b> uart.c:94</div></div>
+<div class="ttc" id="auart_8c_html_a09c08a857a3574a7aae52d8cf4f8c384"><div class="ttname"><a href="uart_8c.html#a09c08a857a3574a7aae52d8cf4f8c384">flag3</a></div><div class="ttdeci">volatile int flag3</div><div class="ttdef"><b>定义</b> uart.c:92</div></div>
+<div class="ttc" id="auart_8c_html_ac5f4d14af23b5194a6483bea010f2ea7"><div class="ttname"><a href="uart_8c.html#ac5f4d14af23b5194a6483bea010f2ea7">flag6</a></div><div class="ttdeci">volatile int flag6</div><div class="ttdef"><b>定义</b> uart.c:95</div></div>
+<div class="ttc" id="auart_8c_html_ac72e2732d23d7d9657647ac406c539f3"><div class="ttname"><a href="uart_8c.html#ac72e2732d23d7d9657647ac406c539f3">buf</a></div><div class="ttdeci">unsigned char buf[128]</div><div class="ttdef"><b>定义</b> uart.c:89</div></div>
+<div class="ttc" id="auart_8c_html_aea72e241c700c39ee7d2e16696f16fcf"><div class="ttname"><a href="uart_8c.html#aea72e241c700c39ee7d2e16696f16fcf">flag4</a></div><div class="ttdeci">volatile int flag4</div><div class="ttdef"><b>定义</b> uart.c:93</div></div>
+<div class="ttc" id="auart_8c_html_aeaec577a45a60c5a5d99ea4d44898075"><div class="ttname"><a href="uart_8c.html#aeaec577a45a60c5a5d99ea4d44898075">flag2</a></div><div class="ttdeci">volatile int flag2</div><div class="ttdef"><b>定义</b> uart.c:91</div></div>
+<div class="ttc" id="auart_8c_html_af15b132d76e1db350c4c51ba440df429"><div class="ttname"><a href="uart_8c.html#af15b132d76e1db350c4c51ba440df429">flag7</a></div><div class="ttdeci">volatile int flag7</div><div class="ttdef"><b>定义</b> uart.c:96</div></div>
+<div class="ttc" id="auart_8h_html_a1039f80b9e4096f21c36745da1262d31"><div class="ttname"><a href="uart_8h.html#a1039f80b9e4096f21c36745da1262d31">uart_send_str</a></div><div class="ttdeci">void uart_send_str(char *str)</div><div class="ttdef"><b>定义</b> uart.c:57</div></div>
+<div class="ttc" id="auart_8h_html_a2578a320d89c6a636bf2bdaf57cc1580"><div class="ttname"><a href="uart_8h.html#a2578a320d89c6a636bf2bdaf57cc1580">uart_recv_byte</a></div><div class="ttdeci">unsigned char uart_recv_byte(void)</div><div class="ttdef"><b>定义</b> uart.c:77</div></div>
+<div class="ttc" id="auart_8h_html_a4c807af15160395508dd6069ceacc239"><div class="ttname"><a href="uart_8h.html#a4c807af15160395508dd6069ceacc239">uart_send_byte</a></div><div class="ttdeci">void uart_send_byte(char data)</div><div class="ttdef"><b>定义</b> uart.c:50</div></div>
+<div class="ttc" id="auart_8h_html_ab17f9fef41d32b6a1021eb1520659218"><div class="ttname"><a href="uart_8h.html#ab17f9fef41d32b6a1021eb1520659218">uart_get_recvbuf</a></div><div class="ttdeci">void uart_get_recvbuf(unsigned char *buf)</div><div class="ttdef"><b>定义</b> uart.c:176</div></div>
+<div class="ttc" id="auart_8h_html_ae8ca773c338f9e90fed5eeb81fc64a7f"><div class="ttname"><a href="uart_8h.html#ae8ca773c338f9e90fed5eeb81fc64a7f">uart_init</a></div><div class="ttdeci">void uart_init(int BaudRate)</div><div class="ttdef"><b>定义</b> uart.c:6</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="uart_8h.html">uart.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

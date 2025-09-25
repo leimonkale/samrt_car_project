@@ -1,0 +1,148 @@
+\doxysection{uart.\+c 文件参考}
+\hypertarget{uart_8c}{}\label{uart_8c}\index{uart.c@{uart.c}}
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uart_8c_ae8ca773c338f9e90fed5eeb81fc64a7f}{uart\+\_\+init}} (int Baud\+Rate)
+\item 
+void \mbox{\hyperlink{uart_8c_a4c807af15160395508dd6069ceacc239}{uart\+\_\+send\+\_\+byte}} (char data)
+\item 
+void \mbox{\hyperlink{uart_8c_a1039f80b9e4096f21c36745da1262d31}{uart\+\_\+send\+\_\+str}} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+int \mbox{\hyperlink{uart_8c_abe6299d5823dd023e610aaa619735a3f}{fputc}} (int c, FILE \texorpdfstring{$\ast$}{*}stream)
+\item 
+unsigned char \mbox{\hyperlink{uart_8c_a2578a320d89c6a636bf2bdaf57cc1580}{uart\+\_\+recv\+\_\+byte}} (void)
+\item 
+void \mbox{\hyperlink{uart_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}{USART1\+\_\+\+IRQHandler}} (void)
+\item 
+void \mbox{\hyperlink{uart_8c_ab17f9fef41d32b6a1021eb1520659218}{uart\+\_\+get\+\_\+recvbuf}} (unsigned char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{uart_8c_ac72e2732d23d7d9657647ac406c539f3}{buf}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{uart_8c_a067330e76545c05b436ace089b400c24}{recv\+\_\+buf}} \mbox{[}64\mbox{]} = \{0\}
+\item 
+unsigned char \mbox{\hyperlink{uart_8c_ac72e2732d23d7d9657647ac406c539f3}{buf}} \mbox{[}128\mbox{]}
+\item 
+int \mbox{\hyperlink{uart_8c_adf916204820072417ed73a32de1cefcf}{flag}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_aeaec577a45a60c5a5d99ea4d44898075}{flag2}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_a09c08a857a3574a7aae52d8cf4f8c384}{flag3}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_aea72e241c700c39ee7d2e16696f16fcf}{flag4}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_a042c180616c014e91d82bab9b47c0290}{flag5}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_ac5f4d14af23b5194a6483bea010f2ea7}{flag6}} = 0
+\item 
+volatile int \mbox{\hyperlink{uart_8c_af15b132d76e1db350c4c51ba440df429}{flag7}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{uart_8c_doc-func-members}
+\doxysubsection{函数说明}
+\Hypertarget{uart_8c_abe6299d5823dd023e610aaa619735a3f}\index{uart.c@{uart.c}!fputc@{fputc}}
+\index{fputc@{fputc}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{fputc()}{fputc()}}
+{\footnotesize\ttfamily \label{uart_8c_abe6299d5823dd023e610aaa619735a3f} 
+int fputc (\begin{DoxyParamCaption}\item[{int}]{c}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{stream}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_ab17f9fef41d32b6a1021eb1520659218}\index{uart.c@{uart.c}!uart\_get\_recvbuf@{uart\_get\_recvbuf}}
+\index{uart\_get\_recvbuf@{uart\_get\_recvbuf}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_get\_recvbuf()}{uart\_get\_recvbuf()}}
+{\footnotesize\ttfamily \label{uart_8c_ab17f9fef41d32b6a1021eb1520659218} 
+void uart\+\_\+get\+\_\+recvbuf (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{buf}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_ae8ca773c338f9e90fed5eeb81fc64a7f}\index{uart.c@{uart.c}!uart\_init@{uart\_init}}
+\index{uart\_init@{uart\_init}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_init()}{uart\_init()}}
+{\footnotesize\ttfamily \label{uart_8c_ae8ca773c338f9e90fed5eeb81fc64a7f} 
+void uart\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{Baud\+Rate}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_a2578a320d89c6a636bf2bdaf57cc1580}\index{uart.c@{uart.c}!uart\_recv\_byte@{uart\_recv\_byte}}
+\index{uart\_recv\_byte@{uart\_recv\_byte}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_recv\_byte()}{uart\_recv\_byte()}}
+{\footnotesize\ttfamily \label{uart_8c_a2578a320d89c6a636bf2bdaf57cc1580} 
+unsigned char uart\+\_\+recv\+\_\+byte (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_a4c807af15160395508dd6069ceacc239}\index{uart.c@{uart.c}!uart\_send\_byte@{uart\_send\_byte}}
+\index{uart\_send\_byte@{uart\_send\_byte}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_byte()}{uart\_send\_byte()}}
+{\footnotesize\ttfamily \label{uart_8c_a4c807af15160395508dd6069ceacc239} 
+void uart\+\_\+send\+\_\+byte (\begin{DoxyParamCaption}\item[{char}]{data}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_a1039f80b9e4096f21c36745da1262d31}\index{uart.c@{uart.c}!uart\_send\_str@{uart\_send\_str}}
+\index{uart\_send\_str@{uart\_send\_str}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_str()}{uart\_send\_str()}}
+{\footnotesize\ttfamily \label{uart_8c_a1039f80b9e4096f21c36745da1262d31} 
+void uart\+\_\+send\+\_\+str (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}\index{uart.c@{uart.c}!USART1\_IRQHandler@{USART1\_IRQHandler}}
+\index{USART1\_IRQHandler@{USART1\_IRQHandler}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{USART1\_IRQHandler()}{USART1\_IRQHandler()}}
+{\footnotesize\ttfamily \label{uart_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc} 
+void USART1\+\_\+\+IRQHandler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{uart_8c_doc-var-members}
+\doxysubsection{变量说明}
+\Hypertarget{uart_8c_ac72e2732d23d7d9657647ac406c539f3}\index{uart.c@{uart.c}!buf@{buf}}
+\index{buf@{buf}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{buf}{buf}}
+{\footnotesize\ttfamily \label{uart_8c_ac72e2732d23d7d9657647ac406c539f3} 
+unsigned char buf\mbox{[}128\mbox{]}}
+
+\Hypertarget{uart_8c_adf916204820072417ed73a32de1cefcf}\index{uart.c@{uart.c}!flag@{flag}}
+\index{flag@{flag}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily \label{uart_8c_adf916204820072417ed73a32de1cefcf} 
+int flag = 0}
+
+\Hypertarget{uart_8c_aeaec577a45a60c5a5d99ea4d44898075}\index{uart.c@{uart.c}!flag2@{flag2}}
+\index{flag2@{flag2}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag2}{flag2}}
+{\footnotesize\ttfamily \label{uart_8c_aeaec577a45a60c5a5d99ea4d44898075} 
+volatile int flag2 = 0}
+
+\Hypertarget{uart_8c_a09c08a857a3574a7aae52d8cf4f8c384}\index{uart.c@{uart.c}!flag3@{flag3}}
+\index{flag3@{flag3}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag3}{flag3}}
+{\footnotesize\ttfamily \label{uart_8c_a09c08a857a3574a7aae52d8cf4f8c384} 
+volatile int flag3 = 0}
+
+\Hypertarget{uart_8c_aea72e241c700c39ee7d2e16696f16fcf}\index{uart.c@{uart.c}!flag4@{flag4}}
+\index{flag4@{flag4}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag4}{flag4}}
+{\footnotesize\ttfamily \label{uart_8c_aea72e241c700c39ee7d2e16696f16fcf} 
+volatile int flag4 = 0}
+
+\Hypertarget{uart_8c_a042c180616c014e91d82bab9b47c0290}\index{uart.c@{uart.c}!flag5@{flag5}}
+\index{flag5@{flag5}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag5}{flag5}}
+{\footnotesize\ttfamily \label{uart_8c_a042c180616c014e91d82bab9b47c0290} 
+volatile int flag5 = 0}
+
+\Hypertarget{uart_8c_ac5f4d14af23b5194a6483bea010f2ea7}\index{uart.c@{uart.c}!flag6@{flag6}}
+\index{flag6@{flag6}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag6}{flag6}}
+{\footnotesize\ttfamily \label{uart_8c_ac5f4d14af23b5194a6483bea010f2ea7} 
+volatile int flag6 = 0}
+
+\Hypertarget{uart_8c_af15b132d76e1db350c4c51ba440df429}\index{uart.c@{uart.c}!flag7@{flag7}}
+\index{flag7@{flag7}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{flag7}{flag7}}
+{\footnotesize\ttfamily \label{uart_8c_af15b132d76e1db350c4c51ba440df429} 
+volatile int flag7 = 0}
+
+\Hypertarget{uart_8c_a067330e76545c05b436ace089b400c24}\index{uart.c@{uart.c}!recv\_buf@{recv\_buf}}
+\index{recv\_buf@{recv\_buf}!uart.c@{uart.c}}
+\doxysubsubsection{\texorpdfstring{recv\_buf}{recv\_buf}}
+{\footnotesize\ttfamily \label{uart_8c_a067330e76545c05b436ace089b400c24} 
+unsigned char recv\+\_\+buf\mbox{[}64\mbox{]} = \{0\}}
+

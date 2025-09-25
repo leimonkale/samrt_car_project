@@ -1,0 +1,29 @@
+\doxysection{hcsr04.\+h}
+\hypertarget{hcsr04_8h_source}{}\label{hcsr04_8h_source}\mbox{\hyperlink{hcsr04_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ hcsr04.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ \_\_HCSR04\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ \_\_HCSR04\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}stm32f10x.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ 超声波模块结构体定义}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00009\ \ \ \ \ GPIO\_TypeDef*\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_a3abe8489cf273bbb4fad8e7e1c692f54}{TRIG\_GPIOx}};\ \ \ \textcolor{comment}{//\ 触发引脚GPIO}}
+\DoxyCodeLine{00010\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_adc20e179c3b8594f6b0c6ebc641779dc}{TRIG\_GPIO\_Pin}};\ \ \ \ \ \textcolor{comment}{//\ 触发引脚}}
+\DoxyCodeLine{00011\ \ \ \ \ GPIO\_TypeDef*\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_a983f3b12f262a0f5c871f79787e8eddf}{ECHO\_GPIOx}};\ \ \ \textcolor{comment}{//\ 回响引脚GPIO}}
+\DoxyCodeLine{00012\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_ac88098c0018d30953a87b4592da46d80}{ECHO\_GPIO\_Pin}};\ \ \ \ \ \textcolor{comment}{//\ 回响引脚}}
+\DoxyCodeLine{00013\ \ \ \ \ TIM\_TypeDef*\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_aeb5226056bee7897f79ab33c4d9a92b2}{TIMx}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 用于计时的定时器}}
+\DoxyCodeLine{00014\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_adfb324aca41e33400c35c3ba0a551bab}{timeout\_us}};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 超时时间(微秒)}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def_a3a37309f968d85c6fd81b93430c58ae7}{distance}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 当前距离(厘米)}}
+\DoxyCodeLine{00016\ \}\ \mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\_HandleTypeDef}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ 函数声明}}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hcsr04_8h_a3669e0d4f6cad21ae3649346d4987460}{HCSR04\_Init}}(\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\_HandleTypeDef}}*\ hcsr04);}
+\DoxyCodeLine{00020\ uint8\_t\ \mbox{\hyperlink{hcsr04_8h_a5a55b08ceda29c8e3387b8818ea71573}{HCSR04\_Measure}}(\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\_HandleTypeDef}}*\ hcsr04);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{hcsr04_8h_a5c0a62505caa59a2f1c1036b71b9ea1d}{HCSR04\_GetDistance}}(\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\_HandleTypeDef}}*\ hcsr04);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_HCSR04\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ }
+
+\end{DoxyCode}
