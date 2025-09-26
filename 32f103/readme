@@ -1,3 +1,5 @@
+smart_car_project\32f103\docs\html tick to architecture
+
 motor1 :
 TIM3 CH1 PWM PA6
 IN1 PA0
