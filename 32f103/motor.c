@@ -19,6 +19,10 @@ void Motor_Init(Motor_HandleTypeDef* motor) {
     if (motor->IN2_GPIOx == GPIOA) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
     else if (motor->IN2_GPIOx == GPIOB) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
     else if (motor->IN2_GPIOx == GPIOC) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	
+	if (motor->PWM_GPIOx == GPIOA) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    else if (motor->PWM_GPIOx == GPIOB) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    else if (motor->PWM_GPIOx == GPIOC) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
     
     // 使能定时器时钟
     if (motor->TIMx == TIM1) RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
@@ -30,7 +34,12 @@ void Motor_Init(Motor_HandleTypeDef* motor) {
     GPIO_InitStructure.GPIO_Pin = motor->IN1_GPIO_Pin | motor->IN2_GPIO_Pin;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(motor->IN1_GPIOx, &GPIO_InitStructure);  // 假设IN1和IN2在同一个GPIO组
+    GPIO_Init(motor->IN1_GPIOx, &GPIO_InitStructure);  // IN1和IN2在同一个GPIO组
+	
+	GPIO_InitStructure.GPIO_Pin = motor->PWM_GPIO_Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  // 复用推挽输出（定时器控制）
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(motor->PWM_GPIOx, &GPIO_InitStructure);
     
     // 默认停止状态
     GPIO_ResetBits(motor->IN1_GPIOx, motor->IN1_GPIO_Pin);
@@ -71,7 +80,7 @@ void Motor_Init(Motor_HandleTypeDef* motor) {
     // 启动定时器
     TIM_Cmd(motor->TIMx, ENABLE);
     
-    // 如果是高级定时器，需要使能主输出
+    // 高级定时器，需要使能主输出
     if (motor->TIMx == TIM1) {
         TIM_CtrlPWMOutputs(motor->TIMx, ENABLE);
     }

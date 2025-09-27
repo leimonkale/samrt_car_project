@@ -13,6 +13,8 @@ typedef enum {
 typedef struct {
     TIM_TypeDef* TIMx;          // 定时器
     uint16_t TIM_Channel;       // 定时器通道
+	GPIO_TypeDef* PWM_GPIOx;    // PWM引脚端口
+	uint16_t PWM_GPIO_Pin;      // PWM引脚
     GPIO_TypeDef* IN1_GPIOx;    // IN1引脚端口
     uint16_t IN1_GPIO_Pin;      // IN1引脚
     GPIO_TypeDef* IN2_GPIOx;    // IN2引脚端口

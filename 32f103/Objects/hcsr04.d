@@ -17,3 +17,4 @@
 .\objects\hcsr04.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h
 .\objects\hcsr04.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\hcsr04.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\misc.h
+.\objects\hcsr04.o: D:\Keil\ARM\ARMCC\Bin\..\include\stddef.h

@@ -12,10 +12,10 @@ HCSR04_HandleTypeDef hcsr04;
 void Hcsr04_Init(void)
 {
 	hcsr04.TIMx = TIM2;
-	hcsr04.ECHO_GPIOx = GPIOA;
-	hcsr04.ECHO_GPIO_Pin = GPIO_Pin_4;
-	hcsr04.TRIG_GPIOx = GPIOA;
-	hcsr04.TRIG_GPIO_Pin = GPIO_Pin_5;
+	hcsr04.ECHO_GPIOx = GPIOB;
+	hcsr04.ECHO_GPIO_Pin = GPIO_Pin_14;
+	hcsr04.TRIG_GPIOx = GPIOB;
+	hcsr04.TRIG_GPIO_Pin = GPIO_Pin_15;
 	
 	HCSR04_Init(&hcsr04);
 }
@@ -26,12 +26,14 @@ void Hcsr04_Init(void)
 void Motor1_Init(void) {
     motor1.TIMx = TIM3;
     motor1.TIM_Channel = TIM_Channel_1;
-    motor1.IN1_GPIOx = GPIOA;
-    motor1.IN1_GPIO_Pin = GPIO_Pin_0;
-    motor1.IN2_GPIOx = GPIOA;
-    motor1.IN2_GPIO_Pin = GPIO_Pin_1;
+	motor1.PWM_GPIOx = GPIOA;
+	motor1.PWM_GPIO_Pin = GPIO_Pin_6;
+    motor1.IN1_GPIOx = GPIOB;
+    motor1.IN1_GPIO_Pin = GPIO_Pin_6;
+    motor1.IN2_GPIOx = GPIOB;
+    motor1.IN2_GPIO_Pin = GPIO_Pin_7;
 	motor1.dir = MOTOR_FORWARD;
-	motor1.speed = 30;
+	motor1.speed = 70;
     Motor_Init(&motor1);
 }
 
@@ -43,17 +45,20 @@ void Motor1_Init(void) {
 void Motor2_Init(void) {
     motor2.TIMx = TIM3;
     motor2.TIM_Channel = TIM_Channel_2;
-    motor2.IN1_GPIOx = GPIOA;
-    motor2.IN1_GPIO_Pin = GPIO_Pin_2;
-    motor2.IN2_GPIOx = GPIOA;
-    motor2.IN2_GPIO_Pin = GPIO_Pin_3;
+	motor2.PWM_GPIOx = GPIOA;
+	motor2.PWM_GPIO_Pin = GPIO_Pin_7;
+    motor2.IN1_GPIOx = GPIOB;
+    motor2.IN1_GPIO_Pin = GPIO_Pin_8;
+    motor2.IN2_GPIOx = GPIOB;
+    motor2.IN2_GPIO_Pin = GPIO_Pin_9;
 	motor2.dir = MOTOR_FORWARD;
-	motor2.speed = 30;
+	motor2.speed = 70;
     Motor_Init(&motor2);
 }
 
 int main()
 {
+	int flag1 = 1;
 	char buf[128];
 	Hcsr04_Init();
 	Motor1_Init();
@@ -61,11 +66,53 @@ int main()
 	
 	uart_init(115200);
 	
-	Motor_Start(&motor1);
-	Motor_Start(&motor2);
-	
 	while(1){
+		HCSR04_Measure(&hcsr04);
+		sprintf(buf, "Distance: %.2f cm\r\n", hcsr04.distance);
+		uart_send_str(buf);
+		/*if(hcsr04.distance < 10 && hcsr04.distance > 0){
+			motor1.dir = MOTOR_BACKWARD;
+			motor2.dir = MOTOR_BACKWARD;
+			motor1.speed = 70;
+			motor2.speed = 70;
+			Motor_Start(&motor1);
+			Motor_Start(&motor2);
+			
+			my_delay_ms(3000);
+			Motor_Stop(&motor1);
+		    Motor_Stop(&motor2);
+		} 
+		else{
+			motor1.dir = MOTOR_FORWARD;
+			motor2.dir = MOTOR_FORWARD;
+			motor1.speed = 70;
+			motor2.speed = 70;
+			Motor_Start(&motor1);
+			Motor_Start(&motor2);
+			
+			my_delay_ms(3000);
+			Motor_Stop(&motor1);
+		    Motor_Stop(&motor2);
+		}*/
 		
+		if(flag1){
+		motor1.dir = MOTOR_FORWARD;
+		motor2.dir = MOTOR_FORWARD;
+		motor1.speed = 70;
+		motor2.speed = 70;
+		Motor_Start(&motor1);
+	    Motor_Start(&motor2);
+		my_delay_ms(5000);
+		motor1.dir = MOTOR_BACKWARD;
+		motor1.speed = 100;
+		motor2.speed = 100;
+		Motor_Start(&motor1);
+	    Motor_Start(&motor2);
+		my_delay_ms(5000);
+		//Motor_Stop(&motor1);
+		//Motor_Stop(&motor2);
+		flag1 = 0;
+		}
 		if(flag2){
 			
 		}
@@ -76,7 +123,6 @@ int main()
 		if(flag7){}
 		
 		//sprintf(buf,"模式运行中...%d %d %d %d %d %d\n",flag2,flag3,flag4,flag5,flag6,flag7);
-		uart_send_str(buf);
 	
 		my_delay_ms(10);
 	

@@ -1,6 +1,7 @@
 // hcsr04.c
 #include "hcsr04.h"
 #include "stm32f10x.h"
+#include <stddef.h>
 
 /**
  * @brief  ³õÊ¼»¯³¬Éù²¨Ä£¿é
@@ -109,4 +110,5 @@ uint8_t HCSR04_Measure(HCSR04_HandleTypeDef* hcsr04) {
 float HCSR04_GetDistance(HCSR04_HandleTypeDef* hcsr04) {
     return hcsr04->distance;
 }
+
 
