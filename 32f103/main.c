@@ -3,6 +3,10 @@
 #include "motor.h"
 #include "uart.h"
 #include "hcsr04.h"
+#include "engin.h"
+
+int flag_motor1 = 0;
+int flag_motor2 = 0;
 
 Motor_HandleTypeDef motor1, motor2;
 HCSR04_HandleTypeDef hcsr04;
@@ -24,10 +28,10 @@ void Hcsr04_Init(void)
  * @brief  初始化电机1结构体
  */
 void Motor1_Init(void) {
-    motor1.TIMx = TIM3;
+    motor1.TIMx = TIM1;
     motor1.TIM_Channel = TIM_Channel_1;
 	motor1.PWM_GPIOx = GPIOA;
-	motor1.PWM_GPIO_Pin = GPIO_Pin_6;
+	motor1.PWM_GPIO_Pin = GPIO_Pin_8;
     motor1.IN1_GPIOx = GPIOB;
     motor1.IN1_GPIO_Pin = GPIO_Pin_6;
     motor1.IN2_GPIOx = GPIOB;
@@ -43,10 +47,10 @@ void Motor1_Init(void) {
  * @retval 无
  */
 void Motor2_Init(void) {
-    motor2.TIMx = TIM3;
-    motor2.TIM_Channel = TIM_Channel_2;
+    motor2.TIMx = TIM1;
+    motor2.TIM_Channel = TIM_Channel_4;
 	motor2.PWM_GPIOx = GPIOA;
-	motor2.PWM_GPIO_Pin = GPIO_Pin_7;
+	motor2.PWM_GPIO_Pin = GPIO_Pin_11;
     motor2.IN1_GPIOx = GPIOB;
     motor2.IN1_GPIO_Pin = GPIO_Pin_8;
     motor2.IN2_GPIOx = GPIOB;
@@ -56,22 +60,26 @@ void Motor2_Init(void) {
     Motor_Init(&motor2);
 }
 
+//设置舵机
+//TIM_SetCompare2(TIM3, 2000);
 int main()
 {
 	int flag1 = 1;
-	char buf[128];
+//	char buf[128];
 	Hcsr04_Init();
 	Motor1_Init();
 	Motor2_Init();
-	
+	gpio_init();
+	//tim3_init();
+		
 	uart_init(115200);
 	
 	while(1){
-		HCSR04_Measure(&hcsr04);
+		/*HCSR04_Measure(&hcsr04);
 		sprintf(buf, "Distance: %.2f cm\r\n", hcsr04.distance);
-		uart_send_str(buf);
-		/*if(hcsr04.distance < 10 && hcsr04.distance > 0){
-			motor1.dir = MOTOR_BACKWARD;
+		uart_send_str(buf);*/
+		if(hcsr04.distance < 10 && hcsr04.distance > 0){
+			/*motor1.dir = MOTOR_BACKWARD;
 			motor2.dir = MOTOR_BACKWARD;
 			motor1.speed = 70;
 			motor2.speed = 70;
@@ -79,21 +87,10 @@ int main()
 			Motor_Start(&motor2);
 			
 			my_delay_ms(3000);
-			Motor_Stop(&motor1);
-		    Motor_Stop(&motor2);
+			Motor_SetDirection(&motor1,MOTOR_FORWARD);
+			my_delay_ms(1000);
+			Motor_SetDirection(&motor2,MOTOR_FORWARD);*/
 		} 
-		else{
-			motor1.dir = MOTOR_FORWARD;
-			motor2.dir = MOTOR_FORWARD;
-			motor1.speed = 70;
-			motor2.speed = 70;
-			Motor_Start(&motor1);
-			Motor_Start(&motor2);
-			
-			my_delay_ms(3000);
-			Motor_Stop(&motor1);
-		    Motor_Stop(&motor2);
-		}*/
 		
 		if(flag1){
 		motor1.dir = MOTOR_FORWARD;
@@ -109,15 +106,25 @@ int main()
 		Motor_Start(&motor1);
 	    Motor_Start(&motor2);
 		my_delay_ms(5000);
-		//Motor_Stop(&motor1);
-		//Motor_Stop(&motor2);
+		motor1.dir = MOTOR_FORWARD;
+		motor2.dir = MOTOR_FORWARD;
+		motor1.speed = 70;
+		motor2.speed = 70;
+		Motor_Start(&motor1);
+	    Motor_Start(&motor2);
 		flag1 = 0;
 		}
 		if(flag2){
+			Motor_SetSpeed(&motor1,70);
+			Motor_SetSpeed(&motor2,70);
 			
 		}
-		if(flag3){}
-		if(flag4){}
+		if(flag3){
+			Motor_SetSpeed(&motor1,100);
+		}
+		if(flag4){
+			Motor_SetSpeed(&motor2,100);
+		}
 		if(flag5){}
 		if(flag6){}
 		if(flag7){}

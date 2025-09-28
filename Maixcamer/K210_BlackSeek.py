@@ -8,12 +8,12 @@ fm.register(7, fm.fpioa.UART1_TX, force=True)
 fm.register(6, fm.fpioa.UART1_RX, force=True)
 uart_A = UART(UART.UART1, 115200, 8, 0, 1, timeout=1000, read_buf_len=4096)
 
-green_threshold = ((0, 4))           #黑色
+green_threshold = ((0, 30))           #黑色
 roi1            = [0,100,320,16]       #巡线敏感区
 roi2            = [0,180,320,8]        #关键点敏感区
 expectedValue   = 160                  #巡线位置期望
 err             = 0                    #本次误差
-old_err         = 0                    #上次误差
+old_err         = 0                    #上次
 Kp              = 0.046                #PID比例系数
 Kd              = 0                    #PID微分系数
 Speed           = 0                    #期望速度

@@ -1,5 +1,10 @@
 #include "stm32f10x.h" 
 #include "engin.h"
+/**
+ * @brief  初始化舵机90GPIO引脚
+ * @param  无
+ * @retval 无
+ */
 void gpio_init(void){
     GPIO_InitTypeDef init;
     // PB5 时钟使能
@@ -10,10 +15,16 @@ void gpio_init(void){
     // PB5 引脚初始化（TIM3_CH2）
     init.GPIO_Pin = GPIO_Pin_5;
     init.GPIO_Speed = GPIO_Speed_50MHz;
-    init.GPIO_Mode = GPIO_Mode_AF_PP;  // 复用推挽输出（正确）
+    init.GPIO_Mode = GPIO_Mode_AF_PP;  // 复用推挽输出
     GPIO_Init(GPIOB, &init);
+	
+	GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3, ENABLE);
 }
-
+/**
+ * @brief  初始化90舵机定时器
+ * @param  无
+ * @retval 无
+ */
 void tim3_init(void){
     TIM_TimeBaseInitTypeDef BaseInit;
     TIM_OCInitTypeDef OcInit;
@@ -33,10 +44,10 @@ void tim3_init(void){
     OcInit.TIM_OCMode = TIM_OCMode_PWM1; // PWM1：计数 < CCR 时输出高电平
     OcInit.TIM_OCPolarity = TIM_OCPolarity_High; // 高电平有效
     OcInit.TIM_OutputState = ENABLE;    // 使能输出
-    TIM_OC1Init(TIM3, &OcInit);
+    TIM_OC2Init(TIM3, &OcInit);
 
     // 使能预装载（稳定PWM输出）
-    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+    TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_ARRPreloadConfig(TIM3, ENABLE);
 
     TIM_Cmd(TIM3, ENABLE);              // 启动定时器

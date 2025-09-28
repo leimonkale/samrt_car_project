@@ -4,6 +4,7 @@
 ".\objects\motor.o"
 ".\objects\uart.o"
 ".\objects\hcsr04.o"
+".\objects\engin.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_dac.o"
 ".\objects\stm32f10x_gpio.o"
