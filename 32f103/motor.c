@@ -161,7 +161,7 @@ void Motor_Start(Motor_HandleTypeDef* motor) {
 void Motor_Stop(Motor_HandleTypeDef* motor) {
     GPIO_ResetBits(motor->IN1_GPIOx, motor->IN1_GPIO_Pin);
     GPIO_ResetBits(motor->IN2_GPIOx, motor->IN2_GPIO_Pin);
-    Motor_SetSpeed(motor, 0);
+    //Motor_SetSpeed(motor, 0);
 }
 
 /**

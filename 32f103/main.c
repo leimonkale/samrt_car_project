@@ -28,10 +28,10 @@ void Hcsr04_Init(void)
  * @brief  初始化电机1结构体
  */
 void Motor1_Init(void) {
-    motor1.TIMx = TIM1;
+    motor1.TIMx = TIM3;
     motor1.TIM_Channel = TIM_Channel_1;
 	motor1.PWM_GPIOx = GPIOA;
-	motor1.PWM_GPIO_Pin = GPIO_Pin_8;
+	motor1.PWM_GPIO_Pin = GPIO_Pin_6;
     motor1.IN1_GPIOx = GPIOB;
     motor1.IN1_GPIO_Pin = GPIO_Pin_6;
     motor1.IN2_GPIOx = GPIOB;
@@ -47,10 +47,10 @@ void Motor1_Init(void) {
  * @retval 无
  */
 void Motor2_Init(void) {
-    motor2.TIMx = TIM1;
-    motor2.TIM_Channel = TIM_Channel_4;
+    motor2.TIMx = TIM3;
+    motor2.TIM_Channel = TIM_Channel_2;
 	motor2.PWM_GPIOx = GPIOA;
-	motor2.PWM_GPIO_Pin = GPIO_Pin_11;
+	motor2.PWM_GPIO_Pin = GPIO_Pin_7;
     motor2.IN1_GPIOx = GPIOB;
     motor2.IN1_GPIO_Pin = GPIO_Pin_8;
     motor2.IN2_GPIOx = GPIOB;
@@ -61,39 +61,89 @@ void Motor2_Init(void) {
 }
 
 //设置舵机
-//TIM_SetCompare2(TIM3, 2000);
+//TIM_SetCompare1(TIM1, 2000);
 int main()
 {
+//	int i = 0;
 	int flag1 = 1;
-//	char buf[128];
+	char buf[128];
 	Hcsr04_Init();
 	Motor1_Init();
 	Motor2_Init();
 	gpio_init();
-	//tim3_init();
+	tim1_init();
 		
 	uart_init(115200);
 	
+	TIM_SetCompare1(TIM1, 1500);
+	
 	while(1){
-		/*HCSR04_Measure(&hcsr04);
+		HCSR04_Measure(&hcsr04);
+		sprintf(buf,"模式运行中...%d %d %d %d %d %d\n",flag2,flag3,flag4,flag5,flag6,flag7);
+		uart_send_str(buf);
 		sprintf(buf, "Distance: %.2f cm\r\n", hcsr04.distance);
-		uart_send_str(buf);*/
+		//sprintf(buf,"%d",uart_recv_byte());
+		uart_send_str(buf);
 		if(hcsr04.distance < 10 && hcsr04.distance > 0){
-			/*motor1.dir = MOTOR_BACKWARD;
-			motor2.dir = MOTOR_BACKWARD;
-			motor1.speed = 70;
-			motor2.speed = 70;
-			Motor_Start(&motor1);
-			Motor_Start(&motor2);
-			
-			my_delay_ms(3000);
-			Motor_SetDirection(&motor1,MOTOR_FORWARD);
+			Motor_Stop(&motor1);
+			Motor_Stop(&motor2);
 			my_delay_ms(1000);
-			Motor_SetDirection(&motor2,MOTOR_FORWARD);*/
+			TIM_SetCompare1(TIM1, 500);
+			my_delay_ms(1000);
+			HCSR04_Measure(&hcsr04);
+			if(hcsr04.distance < 10 && hcsr04.distance > 0){
+				my_delay_ms(1000);
+				TIM_SetCompare1(TIM1, 2500);
+				my_delay_ms(1000);
+				HCSR04_Measure(&hcsr04);
+				if(hcsr04.distance < 10 && hcsr04.distance > 0){
+					motor1.dir = MOTOR_BACKWARD;
+					motor2.dir = MOTOR_BACKWARD;
+					Motor_Start(&motor1);
+					Motor_Start(&motor2);
+					my_delay_ms(3000);
+					Motor_Stop(&motor1);
+					Motor_Stop(&motor2);
+					my_delay_ms(1000);
+					HCSR04_Measure(&hcsr04);
+					if(hcsr04.distance < 10 && hcsr04.distance > 0){
+						
+					}else{
+						TIM_SetCompare1(TIM1, 1500);
+						motor1.dir = MOTOR_BACKWARD;
+						motor2.dir = MOTOR_FORWARD;
+						Motor_Start(&motor1);
+						Motor_Start(&motor2);
+						my_delay_ms(1500);
+						Motor_SetDirection(&motor1,MOTOR_FORWARD);
+					}
+				}
+				else{
+					TIM_SetCompare1(TIM1, 1500);
+					motor1.dir = MOTOR_BACKWARD;
+					motor2.dir = MOTOR_FORWARD;
+					Motor_Start(&motor1);
+					Motor_Start(&motor2);
+					my_delay_ms(1500);
+					Motor_SetDirection(&motor1,MOTOR_FORWARD);
+				}
+			
+			}
+			else{
+				TIM_SetCompare1(TIM1, 1500);
+				motor1.dir = MOTOR_FORWARD;
+				motor2.dir = MOTOR_BACKWARD;
+				Motor_Start(&motor1);
+				Motor_Start(&motor2);
+				my_delay_ms(1500);
+				Motor_SetDirection(&motor2,MOTOR_FORWARD);
+			}
+			
+			
 		} 
 		
 		if(flag1){
-		motor1.dir = MOTOR_FORWARD;
+		/*motor1.dir = MOTOR_FORWARD;
 		motor2.dir = MOTOR_FORWARD;
 		motor1.speed = 70;
 		motor2.speed = 70;
@@ -105,32 +155,42 @@ int main()
 		motor2.speed = 100;
 		Motor_Start(&motor1);
 	    Motor_Start(&motor2);
-		my_delay_ms(5000);
+		my_delay_ms(5000);*/
 		motor1.dir = MOTOR_FORWARD;
 		motor2.dir = MOTOR_FORWARD;
-		motor1.speed = 70;
-		motor2.speed = 70;
+		motor1.speed = 100;
+		motor2.speed = 85;
 		Motor_Start(&motor1);
 	    Motor_Start(&motor2);
 		flag1 = 0;
 		}
 		if(flag2){
-			Motor_SetSpeed(&motor1,70);
-			Motor_SetSpeed(&motor2,70);
+			Motor_SetSpeed(&motor1,100);
+			Motor_SetSpeed(&motor2,85);
+			Motor_Start(&motor1);
+			Motor_Start(&motor2);
+			flag2 = 0;
 			
 		}
 		if(flag3){
-			Motor_SetSpeed(&motor1,100);
+			Motor_Stop(&motor1);
+			Motor_Stop(&motor2);
+			my_delay_ms(500);
+			
+			flag3 = 0;
 		}
 		if(flag4){
-			Motor_SetSpeed(&motor2,100);
+			Motor_SetSpeed(&motor2,90);
+			flag4 = 0;
 		}
-		if(flag5){}
-		if(flag6){}
+		if(flag5){
+			
+		}
+		if(flag6){
+			
+		}
 		if(flag7){}
 		
-		//sprintf(buf,"模式运行中...%d %d %d %d %d %d\n",flag2,flag3,flag4,flag5,flag6,flag7);
-	
 		my_delay_ms(10);
 	
 	}

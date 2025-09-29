@@ -5,7 +5,7 @@
 
 //ENGIN PA_6
 void gpio_init(void);
-void tim3_init(void);
+void tim1_init(void);
 
 
 #endif

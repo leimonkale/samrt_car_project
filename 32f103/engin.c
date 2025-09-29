@@ -1,57 +1,69 @@
 #include "stm32f10x.h" 
 #include "engin.h"
+
 /**
- * @brief  初始化舵机90GPIO引脚
+ * @brief  初始化舵机GPIO引脚(PA8 - TIM1_CH1)
  * @param  无
  * @retval 无
  */
 void gpio_init(void){
     GPIO_InitTypeDef init;
-    // PB5 时钟使能
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-    // 复用功能时钟使能（关键：复用推挽输出需开启AFIO时钟）
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+    // 使能GPIOA和AFIO时钟
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
 
-    // PB5 引脚初始化（TIM3_CH2）
-    init.GPIO_Pin = GPIO_Pin_5;
+    // PA8 配置为复用推挽输出（TIM1_CH1）
+    init.GPIO_Pin = GPIO_Pin_8;
     init.GPIO_Speed = GPIO_Speed_50MHz;
-    init.GPIO_Mode = GPIO_Mode_AF_PP;  // 复用推挽输出
-    GPIO_Init(GPIOB, &init);
-	
-	GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3, ENABLE);
+    init.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_Init(GPIOA, &init);
 }
+
 /**
- * @brief  初始化90舵机定时器
+ * @brief  初始化舵机定时器(TIM1_CH1)
  * @param  无
  * @retval 无
  */
-void tim3_init(void){
+void tim1_init(void){
     TIM_TimeBaseInitTypeDef BaseInit;
     TIM_OCInitTypeDef OcInit;
 
-    // TIM3 时钟使能
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+    // 使能TIM1时钟（APB2总线）
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
 
-    // 定时器基础配置（改为向上计数，更直观）
-    BaseInit.TIM_Prescaler = 71;        // 预分频：72MHz/(71+1)=1MHz（1μs/计数）
-    BaseInit.TIM_Period = 19999;         // 周期：2001μs（约500Hz）
-    BaseInit.TIM_ClockDivision = TIM_CKD_DIV1; // 不分频
-    BaseInit.TIM_CounterMode = TIM_CounterMode_Up; // 向上计数（推荐）
-    TIM_TimeBaseInit(TIM3, &BaseInit);
+    // 时基配置：20ms周期（50Hz）
+    BaseInit.TIM_Prescaler = 71;        // 72MHz/(71+1)=1MHz（1μs计数）
+    BaseInit.TIM_Period = 19999;        // 20000μs = 20ms
+    BaseInit.TIM_ClockDivision = TIM_CKD_DIV1;
+    BaseInit.TIM_CounterMode = TIM_CounterMode_Up;
+    BaseInit.TIM_RepetitionCounter = 0;  // 高级定时器特有
+    TIM_TimeBaseInit(TIM1, &BaseInit);
 
-    // PWM配置
-    OcInit.TIM_Pulse = 1500;            // 比较值：1000μs高电平（占空比~50%）
-    OcInit.TIM_OCMode = TIM_OCMode_PWM1; // PWM1：计数 < CCR 时输出高电平
-    OcInit.TIM_OCPolarity = TIM_OCPolarity_High; // 高电平有效
-    OcInit.TIM_OutputState = ENABLE;    // 使能输出
-    TIM_OC2Init(TIM3, &OcInit);
+    // PWM配置（CH1）- 注意：结构体中没有TIM_Channel成员
+    OcInit.TIM_OCMode = TIM_OCMode_PWM1;
+    OcInit.TIM_OutputState = TIM_OutputState_Enable;
+    OcInit.TIM_OutputNState = TIM_OutputNState_Disable;  // 禁用互补通道
+    OcInit.TIM_Pulse = 1500;            // 初始中位（1.5ms）
+    OcInit.TIM_OCPolarity = TIM_OCPolarity_High;
+    OcInit.TIM_OCNPolarity = TIM_OCNPolarity_High;      // 互补通道极性（未使用）
+    OcInit.TIM_OCIdleState = TIM_OCIdleState_Reset;
+    OcInit.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
+    TIM_OC1Init(TIM1, &OcInit);         // 通过函数名指定通道1
 
-    // 使能预装载（稳定PWM输出）
-    TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
-    TIM_ARRPreloadConfig(TIM3, ENABLE);
+    // 使能预装载
+    TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
+    TIM_ARRPreloadConfig(TIM1, ENABLE);
 
-    TIM_Cmd(TIM3, ENABLE);              // 启动定时器
+    // 关键：高级定时器必须使能主输出
+    TIM_CtrlPWMOutputs(TIM1, ENABLE);
+    // 启动定时器
+    TIM_Cmd(TIM1, ENABLE);
 }
 
-
+// 舵机角度控制函数
+void servo_set_angle(uint16_t angle){
+    // 角度转脉冲：0°->500μs，180°->2500μs
+    uint16_t pulse = 500 + (angle * 2000 / 180);
+    TIM_SetCompare1(TIM1, pulse);
+}
+    
 

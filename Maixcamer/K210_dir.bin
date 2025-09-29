@@ -24,7 +24,10 @@ sensor.set_auto_gain(False)
 sensor.set_auto_whitebal(False)
 
 def send_direction(direction):
+    # 将方向值转换为ASCII字符（0->'0', 1->'1', 2->'2'）
+    # ASCII码中 '0'=48, '1'=49, '2'=50，所以加48即可转换
     ascii_char = chr(direction + 48)
+    # 发送ASCII字符（作为字节）
     uart_A.write(ascii_char)
     # 打印发送的ASCII码信息
     print("发送ASCII字符: '" + ascii_char + "' (ASCII码值: " + str(ord(ascii_char)) + ")")

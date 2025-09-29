@@ -126,7 +126,7 @@ void USART1_IRQHandler(void)
 		
 		 switch(RxData)
         {
-            case '0':  // 字符'1'的ASCII码是0x31，直接写'1'更直观
+            case '0':  
                 flag2 = 1;
                 break;
             case '1':
@@ -135,10 +135,10 @@ void USART1_IRQHandler(void)
             case '2':
                 flag4 = 1;
                 break;
-            case '4':
+            case '3':
                 flag5 = 1;
                 break;
-            case '5':
+            case '4':
                 flag6 = 1;
                 break;
             case '6':
