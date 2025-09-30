@@ -1,0 +1,27 @@
+smart_car_project\32f103\docs\html tick to architecture
+
+motor1 :
+TIM3 CH1 PWM PA6
+IN1 PB6
+IN2 PB7
+
+motor2 :
+TIM3 CH2 PWM PA7
+IN1 PB8
+IN2 PB9
+
+hcsr04 :
+TIM2
+ECHO PB14
+TRIG PB15
+
+uart :
+PA9
+PA10
+
+engin :
+PWM TM1 CH1 PA8
+
+flag2 center
+flag3 left
+flag4 right
