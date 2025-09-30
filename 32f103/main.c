@@ -320,26 +320,33 @@ int main()
 		}
 		if(flag2){
 			Motor_SetSpeed(&motor1,100);
-			Motor_SetSpeed(&motor2,85);
+			Motor_SetSpeed(&motor2,100);
 			Motor_Start(&motor1);
 			Motor_Start(&motor2);
 			flag2 = 0;
 			
 		}
 		if(flag3){
-			Motor_SetSpeed(&motor2,90);
-			my_delay_ms(500);
+			//Motor_SetSpeed(&motor1,50);
+			Motor_Stop(&motor2);
 			flag3 = 0;
 		}
 		if(flag4){
-			Motor_SetSpeed(&motor2,90);
+			Motor_Stop(&motor1);
+			//Motor_SetSpeed(&motor2,50);
 			flag4 = 0;
 		}
 		if(flag5){
-			
+			//Motor_Stop(&motor2);
+			flag5 = 0;
 		}
 		if(flag6){
-			
+			Motor_Stop(&motor2);
+			Motor_Stop(&motor1);
+			my_delay_ms(5000);
+			Motor_Start(&motor2);
+			my_delay_ms(800);
+			flag6 = 0;
 		}
 		if(flag7){}
 		
