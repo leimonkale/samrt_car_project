@@ -6,11 +6,11 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{uart_8h_ae8ca773c338f9e90fed5eeb81fc64a7f}{uart\+\_\+init}} (int Baud\+Rate)
-\item 
+\begin{DoxyCompactList}\small\item\em 初始化串口 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{uart_8h_a4c807af15160395508dd6069ceacc239}{uart\+\_\+send\+\_\+byte}} (char data)
-\item 
+\begin{DoxyCompactList}\small\item\em 串口发送字符 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{uart_8h_a1039f80b9e4096f21c36745da1262d31}{uart\+\_\+send\+\_\+str}} (char \texorpdfstring{$\ast$}{*}str)
-\item 
+\begin{DoxyCompactList}\small\item\em 串口发送字符串 \end{DoxyCompactList}\item 
 unsigned char \mbox{\hyperlink{uart_8h_a2578a320d89c6a636bf2bdaf57cc1580}{uart\+\_\+recv\+\_\+byte}} (void)
 \item 
 void \mbox{\hyperlink{uart_8h_ab17f9fef41d32b6a1021eb1520659218}{uart\+\_\+get\+\_\+recvbuf}} (unsigned char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{uart_8c_ac72e2732d23d7d9657647ac406c539f3}{buf}})
@@ -47,6 +47,20 @@ void uart\+\_\+get\+\_\+recvbuf (\begin{DoxyParamCaption}\item[{unsigned char \t
 {\footnotesize\ttfamily \label{uart_8h_ae8ca773c338f9e90fed5eeb81fc64a7f} 
 void uart\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{Baud\+Rate}{}\end{DoxyParamCaption})}
 
+
+
+初始化串口 
+
+
+\begin{DoxyParams}{参数}
+{\em 波特率} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{uart_8h_a2578a320d89c6a636bf2bdaf57cc1580}\index{uart.h@{uart.h}!uart\_recv\_byte@{uart\_recv\_byte}}
 \index{uart\_recv\_byte@{uart\_recv\_byte}!uart.h@{uart.h}}
 \doxysubsubsection{\texorpdfstring{uart\_recv\_byte()}{uart\_recv\_byte()}}
@@ -59,12 +73,40 @@ unsigned char uart\+\_\+recv\+\_\+byte (\begin{DoxyParamCaption}\item[{void}]{}{
 {\footnotesize\ttfamily \label{uart_8h_a4c807af15160395508dd6069ceacc239} 
 void uart\+\_\+send\+\_\+byte (\begin{DoxyParamCaption}\item[{char}]{data}{}\end{DoxyParamCaption})}
 
+
+
+串口发送字符 
+
+
+\begin{DoxyParams}{参数}
+{\em 单个字符} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
 \Hypertarget{uart_8h_a1039f80b9e4096f21c36745da1262d31}\index{uart.h@{uart.h}!uart\_send\_str@{uart\_send\_str}}
 \index{uart\_send\_str@{uart\_send\_str}!uart.h@{uart.h}}
 \doxysubsubsection{\texorpdfstring{uart\_send\_str()}{uart\_send\_str()}}
 {\footnotesize\ttfamily \label{uart_8h_a1039f80b9e4096f21c36745da1262d31} 
 void uart\+\_\+send\+\_\+str (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
 
+
+
+串口发送字符串 
+
+
+\begin{DoxyParams}{参数}
+{\em 字符串} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
 
 
 \label{doc-var-members}

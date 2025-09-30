@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['in1_5fgpio_5fpin_0',['IN1_GPIO_Pin',['../struct_motor___handle_type_def.html#ae9f9128f13c5ea1bf3c10c7f732166ec',1,'Motor_HandleTypeDef']]],
-  ['in1_5fgpiox_1',['IN1_GPIOx',['../struct_motor___handle_type_def.html#a0333910a32d993ee8e708578ccdb0f63',1,'Motor_HandleTypeDef']]],
-  ['in2_5fgpio_5fpin_2',['IN2_GPIO_Pin',['../struct_motor___handle_type_def.html#ad09e4f01c58f62e49ddf36e61cbe7905',1,'Motor_HandleTypeDef']]],
-  ['in2_5fgpiox_3',['IN2_GPIOx',['../struct_motor___handle_type_def.html#a5146af5cf13207a4a2b3adc684967095',1,'Motor_HandleTypeDef']]]
+  ['get_5flight1_5fvalue_0',['get_light1_value',['../light_8c.html#aac085cef7950d40d6821a5219d41ac04',1,'get_light1_value(void):&#160;light.c'],['../light_8h.html#aac085cef7950d40d6821a5219d41ac04',1,'get_light1_value(void):&#160;light.c']]],
+  ['get_5flight2_5fvalue_1',['get_light2_value',['../light_8c.html#a07d2d7d05dae3a300695c5b39bdf3a59',1,'get_light2_value(void):&#160;light.c'],['../light_8h.html#a07d2d7d05dae3a300695c5b39bdf3a59',1,'get_light2_value(void):&#160;light.c']]],
+  ['get_5flight_5fdirection_2',['Get_Light_Direction',['../main_8c.html#a3921ffd50bc984cf1082718a7054b074',1,'main.c']]],
+  ['gpio_5finit_3',['gpio_init',['../engin_8c.html#afdbe206b3c49f019757ab09b3cf52b9c',1,'gpio_init(void):&#160;engin.c'],['../engin_8h.html#afdbe206b3c49f019757ab09b3cf52b9c',1,'gpio_init(void):&#160;engin.c']]],
+  ['gpio_5fsetin_4',['gpio_setIn',['../main_8c.html#a5d58d4274ae8d7f14054da7cfc933093',1,'main.c']]],
+  ['gpio_5fsetout_5',['gpio_setOut',['../main_8c.html#a418c84f82c35be4ad21840f636b829b4',1,'main.c']]]
 ];

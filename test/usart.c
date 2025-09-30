@@ -26,7 +26,7 @@ void USART1_Init(uint32_t bound) {
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
     
-    // ≈‰÷√USART1
+    // ≈‰÷√USART1_leimonkale
     USART_InitStructure.USART_BaudRate = bound;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;

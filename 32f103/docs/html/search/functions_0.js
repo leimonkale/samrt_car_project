@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fputc_0',['fputc',['../uart_8c.html#abe6299d5823dd023e610aaa619735a3f',1,'uart.c']]]
+  ['adc_5fget_5faverage_0',['ADC_Get_Average',['../main_8c.html#a8e6076c3e7394c4eb21cad1f43acee91',1,'main.c']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buf_0',['buf',['../uart_8c.html#ac72e2732d23d7d9657647ac406c539f3',1,'uart.c']]]
+  ['adc_5fget_5faverage_0',['ADC_Get_Average',['../main_8c.html#a8e6076c3e7394c4eb21cad1f43acee91',1,'main.c']]]
 ];

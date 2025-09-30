@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['motor_5fdirectiontypedef_0',['Motor_DirectionTypeDef',['../motor_8h.html#a09a2dce578b7bd009d01afb42c2b59df',1,'motor.h']]]
+  ['light_5fdirection_0',['Light_Direction',['../main_8c.html#a218b317716a93c10b0ccb4fe5d64ca19',1,'main.c']]]
 ];

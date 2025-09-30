@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['motor_5fbackward_0',['MOTOR_BACKWARD',['../motor_8h.html#a09a2dce578b7bd009d01afb42c2b59dfa5af0cbc39d4088d3c93dc6246f9fc048',1,'motor.h']]],
-  ['motor_5fforward_1',['MOTOR_FORWARD',['../motor_8h.html#a09a2dce578b7bd009d01afb42c2b59dfaf0f1281d2a842ac5b2cfcea0448dfe8d',1,'motor.h']]]
+  ['dir_5ffront_0',['DIR_FRONT',['../main_8c.html#a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1',1,'main.c']]],
+  ['dir_5fleft_1',['DIR_LEFT',['../main_8c.html#a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660',1,'main.c']]],
+  ['dir_5fright_2',['DIR_RIGHT',['../main_8c.html#a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8',1,'main.c']]]
 ];
