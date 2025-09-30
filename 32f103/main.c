@@ -10,6 +10,159 @@ int flag_motor2 = 0;
 
 Motor_HandleTypeDef motor1, motor2;
 HCSR04_HandleTypeDef hcsr04;
+
+/// 定义觅光判断范围
+#define FRONT_MIN 1000   // 正前方的最小差值
+#define FRONT_MAX 1200 // 正前方的最大差值
+#define SAMPLE_TIMES 5 
+
+/// 定义方向枚举
+typedef enum {
+    DIR_LEFT = 0,       // 向左
+    DIR_FRONT,          // 正前方
+    DIR_RIGHT           // 向右
+} Light_Direction;
+
+/**
+ * @brief  DHT11 PB10设置管脚为输入模式
+ */
+void gpio_setIn()		
+{
+	GPIO_InitTypeDef init;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	init.GPIO_Pin = GPIO_Pin_10;
+	init.GPIO_Speed = GPIO_Speed_50MHz;
+	init.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_Init(GPIOB, &init);
+}
+/**
+ * @brief  DHT11 PB10设置管脚为输出模式
+ */
+void gpio_setOut()		
+{
+	GPIO_InitTypeDef init;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	init.GPIO_Pin = GPIO_Pin_10;
+	init.GPIO_Speed = GPIO_Speed_50MHz;
+	init.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(GPIOB, &init);
+}
+/**
+ * @brief  多采集取平均（减少ADC抖动，采集5次，去极值后平均）
+ */
+int dht11_read(int *hum, int *tem)
+{
+	int cnt, i, j;
+	char buf[5] = {0};
+	
+	//设置管脚为输出功能
+	gpio_setOut();
+	
+	//拉低电平，持续 >= 18ms (20ms)
+	GPIO_WriteBit(GPIOB, GPIO_Pin_10, Bit_RESET);
+	systick_delay_ms(20);
+	
+	//拉高电平 30(us)
+	GPIO_WriteBit(GPIOB, GPIO_Pin_10, Bit_SET);
+	systick_delay_us(30);
+	
+	//设置管脚为 输入模式
+	gpio_setIn();
+	
+	//读取管脚电平，判断DHT11是否响应
+	if( GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0){
+		
+		//等待低电平结束
+		while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0);
+		//等待高电平结束
+		while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 1);
+		
+		for(i = 0; i < 5; i++){		//循环5次读取 5字节数据
+			for(j = 7;j >= 0; j--){
+				cnt = 0;
+				//等待DHT11发送数据时 低电平结束
+				while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0);
+		
+				//读取DHT11发送数据时 高电平的时长
+				while(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 1){
+					cnt++;
+					systick_delay_us(10);
+				}
+				if(cnt > 5){
+					buf[i] = buf[i] | (1 << j);
+				}
+			}
+		}
+		//校验5字节中前 4字节之和的低 8位 是否等于 第5字节
+		if( ((buf[0]+buf[1]+buf[2]+buf[3]) & 0xff) == buf[4]){
+			*hum = buf[0];
+			*tem = buf[2];
+			return 0;
+		}
+	}
+	return -1;
+}
+
+/**
+ * @brief  多采集取平均（减少ADC抖动，采集5次，去极值后平均）
+ */
+uint16_t ADC_Get_Average(ADC_TypeDef* ADCx, uint8_t channel, uint8_t times) {
+    uint16_t buf[SAMPLE_TIMES];
+    uint16_t sum = 0, temp;
+	uint8_t i;
+	uint8_t j;
+    
+    // 采集times次数据
+    for (i = 0; i < times; i++) {
+        ADC_RegularChannelConfig(ADCx, channel, 1, ADC_SampleTime_239Cycles5); // 配置通道
+        ADC_SoftwareStartConvCmd(ADCx, ENABLE);                                // 启动转换
+        while (ADC_GetFlagStatus(ADCx, ADC_FLAG_EOC) == RESET);                // 等待完成
+        buf[i] = ADC_GetConversionValue(ADCx);                                 // 存数据
+    }
+    
+    // 排序（去极值：去掉最大和最小，避免极端噪声）
+    for (i = 0; i < times-1; i++) {
+        for (j = 0; j < times-1-i; j++) {
+            if (buf[j] > buf[j+1]) {
+                temp = buf[j];
+                buf[j] = buf[j+1];
+                buf[j+1] = temp;
+            }
+        }
+    }
+    
+    // 求和（去掉第一个最小和最后一个最大）
+    for (i = 1; i < times-1; i++) {
+        sum += buf[i];
+    }
+    
+    // 返回平均值
+    return sum / (times - 2);
+}
+/**
+ * @brief  觅光方向输出
+ */
+Light_Direction Get_Light_Direction(void) {
+    uint16_t adc_left, adc_right;
+    int32_t diff; // 差值（int32_t避免负数溢出）
+    
+    // 采集左右ADC值（各采集5次，去极值平均，抗抖动）
+    adc_left = ADC_Get_Average(ADC1, ADC_Channel_3, 5);  // 左侧：ADC1_IN3（PA3）
+    adc_right = ADC_Get_Average(ADC2, ADC_Channel_5, 5); // 右侧：ADC2_IN7（PA7）
+    
+    // 计算差值
+    diff = adc_right - adc_left;
+    
+    // 判断方向
+    if (diff < FRONT_MIN) {
+        return DIR_LEFT;       //  向左
+    } else if (diff > FRONT_MAX) {
+        return DIR_RIGHT;      //  向右
+    } else {
+        return DIR_FRONT;      //  正前方
+    }
+}
+
 /**
  * @brief  初始化超声波模块结构体
  */
@@ -72,6 +225,7 @@ int main()
 	Motor2_Init();
 	gpio_init();
 	tim1_init();
+	
 		
 	uart_init(115200);
 	
@@ -173,10 +327,8 @@ int main()
 			
 		}
 		if(flag3){
-			Motor_Stop(&motor1);
-			Motor_Stop(&motor2);
+			Motor_SetSpeed(&motor2,90);
 			my_delay_ms(500);
-			
 			flag3 = 0;
 		}
 		if(flag4){

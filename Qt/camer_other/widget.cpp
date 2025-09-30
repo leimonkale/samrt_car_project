@@ -13,7 +13,7 @@ Widget::Widget(QWidget *parent)
 
     foreach(const QSerialPortInfo &info,QSerialPortInfo::availablePorts()){
         menu->addAction(info.portName(), this, [this, portName = info.portName()]() {
-            this->connectSerial(portName); // 点击动作时才执行，参数正确传递
+            this->connectSerial(portName); 
         });
         qDebug()<<info.portName();
     }
@@ -44,11 +44,11 @@ Widget::Widget(QWidget *parent)
         foreach (QAction *action, menu->actions()) {
             if (action->text() == targetName) {
                 menu->removeAction(action);
-                action->deleteLater(); // 安全释放动作对象
-                break; // 找到后退出循环，提高效率
+                action->deleteLater(); 
+                break; 
             }
         }
-        ports.removeOne(targetName); // 删除列表中第一个匹配 targetName 的元素
+        ports.removeOne(targetName);
     });
 
     thread->start(); // 启动线程connect(,)
@@ -97,64 +97,61 @@ void Widget::on_pushButton_2_clicked()
 }
 
 bool Widget::connectSerial(const QString &portName) {
-    // 1. 检查串口是否已打开，若已打开则先关闭
+    
     if (serialport->isOpen()) {
         serialport->close();
     }
 
-    // 2. 设置串口名称
+    // 设置串口名称
     serialport->setPortName(portName);
 
-    // 3. 配置串口参数（根据硬件需求修改，以下为常见配置）
-    serialport->setBaudRate(QSerialPort::Baud115200);    // 波特率 115200
-    serialport->setDataBits(QSerialPort::Data8);       // 数据位 8
-    serialport->setParity(QSerialPort::NoParity);      // 无校验位
-    serialport->setStopBits(QSerialPort::OneStop);     // 停止位 1
-    serialport->setFlowControl(QSerialPort::NoFlowControl); // 无流控制
+    //  配置串口参数
+    serialport->setBaudRate(QSerialPort::Baud115200);
+    serialport->setDataBits(QSerialPort::Data8);
+    serialport->setParity(QSerialPort::NoParity);
+    serialport->setStopBits(QSerialPort::OneStop);
+    serialport->setFlowControl(QSerialPort::NoFlowControl);
 
-    // 4. 打开串口（读写模式）
+    // 打开串口（读写模式）
     if (serialport->open(QIODevice::ReadWrite)) {
         qDebug() << "串口连接成功：" << portName;
-        // 连接成功后，可关联接收数据的信号（收到数据时触发）
+        
         ui->pushButton_2->setEnabled(true);
         connect(serialport, &QSerialPort::readyRead, this, &Widget::readSerialData);
         return true;
     } else {
-        // 打开失败，输出错误原因
+        
         qDebug() << "串口连接失败：" << serialport->errorString();
         return false;
     }
 }
 
 void Widget::readSerialData() {
-    // 主动读取串口数据（这一步才是获取数据的关键）
+    
     QByteArray data = serialport->readAll();
     QTextCodec *gbkCodec = QTextCodec::codecForName("GBK");
     if (!gbkCodec) {
-        // 处理找不到GBK编码器的情况
+        
         return;
     }
-    // 2. 将GBK字节数组转换为Unicode字符串（QString内部是Unicode）
+    //  将GBK字节数组转换为Unicode字符串
     QString unicodeStr = gbkCodec->toUnicode(data);
 
-    // 3. 将Unicode字符串转换为UTF-8编码的字节数组
+    // Unicode字符串转换为UTF-8编码的字节数组
     QByteArray utf8Data = unicodeStr.toUtf8();
 
     m_rxBuffer += unicodeStr;
-    // 此时utf8Data就是UTF-8编码的数据，可以用于需要UTF-8的场景
-    // 例如设置到QTextEdit中（QTextEdit内部支持Unicode，会自动处理）
-    // 直接使用Unicode字符串更高效
-    // 3. 检查缓冲区中是否包含完整帧（以'\n'为结束标志）
+    
     while (m_rxBuffer.contains('\n')) {
-        // 4. 提取第一个'\n'之前的完整数据（包括'\n'）
-        int endIndex = m_rxBuffer.indexOf('\n');
-        QString completeData = m_rxBuffer.left(endIndex + 1);  // 包含'\n'
 
-        ui->textEdit->append(completeData);  // 显示完整数据
+        int endIndex = m_rxBuffer.indexOf('\n');
+        QString completeData = m_rxBuffer.left(endIndex + 1);  
+
+        ui->textEdit->append(completeData);  
         qDebug() << "收到完整数据：" << completeData;
 
         if (!completeData.isEmpty() && completeData.at(0) == QStringLiteral("左")) {
-            // 6. 首字符是“左”，按UTF-8编码发送（与接收端约定一致）
+            // 首字符是“左”，按UTF-8编码发送
             QByteArray sendData = completeData.toUtf8();
             if (socket && socket->state() == QTcpSocket::ConnectedState) {
                 qint64 bytesWritten = socket->write(sendData);
@@ -167,35 +164,35 @@ void Widget::readSerialData() {
                 qDebug() << "[符合条件-未发送] Socket未连接，无法发送数据:" << completeData;
             }
         } else {
-            // 首字符不是“左”，不发送（可选：打印调试信息）
+
             qDebug() << "[不符合条件-不发送] 首字符非“左”，数据:" << completeData;
         }
-        // 6. 从缓冲区中移除已处理的部分，保留剩余数据（用于下次拼接）
+        //  从缓冲区中移除已处理的部分，保留剩余数据
         m_rxBuffer.remove(0, endIndex + 1);
     }
 }
 
 void Widget::disconnectSerial() {
-    // 1. 检查串口是否已打开，避免重复关闭
+    // 检查串口是否已打开，避免重复关闭
     if (!serialport->isOpen()) {
         //ui->statusLabel->setText("未连接串口");
         return;
     }
 
-    // 2. 记录当前连接的串口名称（用于后续状态提示）
+    // 记录当前连接的串口名称
     QString currentPort = serialport->portName();
 
-    // 3. 关闭串口（核心操作）
+    //  关闭串口
     serialport->close();
 
-    // 4. 断开数据接收的信号连接（可选，避免收到无效数据）
+    
     disconnect(serialport, &QSerialPort::readyRead, this, &Widget::readSerialData);
 
-    // 5. 更新 UI 状态
+    // 更新 UI 状态
     // ui->statusLabel->setText("已断开：" + currentPort);
-    // menu->setEnabled(true); // 重新启用菜单，允许选择其他串口
-    ui->pushButton_2->setEnabled(false); // 禁用“断开”按钮
-    // ui->connectButton->setEnabled(true); // 启用“连接”按钮（如果有）
+    // menu->setEnabled(true);
+    ui->pushButton_2->setEnabled(false); 
+    // ui->connectButton->setEnabled(true); 
 
     qDebug() << "串口已断开：" << currentPort;
 }
@@ -205,7 +202,7 @@ void Widget::on_pushButton_3_clicked()
 {
     QString message = ui->lineEdit->text();
     if (!message.isEmpty()) {
-        // 将QString转换为QByteArray，因为串口发送的是字节数组
+        // 将QString转换为QByteArray
         QByteArray data = message.toUtf8();
         // 向串口发送数据
         qint64 bytesWritten = serialport->write(data);
@@ -225,8 +222,8 @@ void Widget::newConnection()
         ui->textEdit_2->append ("接受客户端：" + server->errorString ());
         return;
     }
-    qDebug () << socket->peerAddress ().toString (); // 打印地址
-    qDebug () << socket->peerPort (); // 打印端口号
+    qDebug () << socket->peerAddress ().toString ();
+    qDebug () << socket->peerPort ();
     ui->textEdit_2->append ( socket->peerAddress ().toString () + "->" + QString::number (socket->peerPort ()));
     connect(socket,&QTcpSocket::readyRead,this,&Widget::recvData);
 }
@@ -279,17 +276,17 @@ void Widget::initUI()
 
 void Widget::cameraStart(){
 
-        // 2. 初始化视频显示组件
+        
         videoWidget = new QVideoWidget(this);
         videoWidget->setMinimumSize(64, 48);
         ui->verticalLayout->addWidget(videoWidget);
 
-        // 3. 初始化相机和会话
+       
         captureSession = new QMediaCaptureSession(this);
-        camera = new QCamera(cameras.first(), this); // Qt 6 直接用 QCameraDevice
+        camera = new QCamera(cameras.first(), this); 
         captureSession->setCamera(camera);
-        captureSession->setVideoOutput(videoWidget); // 关联视频输出到 QVideoWidget
-        // 5. 启动相机
+        captureSession->setVideoOutput(videoWidget); 
+        
         camera->start();
 }
 
@@ -304,7 +301,7 @@ void Widget::getVideoWidgetFrame(QVideoWidget *videoWidget, QImage &frame)
     frame = QImage(videoWidget->size(), QImage::Format_ARGB32);
     frame.fill(Qt::transparent);
 
-    // 绘制视频部件内容到图像，直接使用上面创建的frame作为绘制目标
+    // 绘制视频部件内容到图像
     QPainter painter(&frame);
     videoWidget->render(&painter);
     painter.end();
@@ -314,16 +311,16 @@ void Widget::sendImage(QTcpSocket *socket, const QImage &image)
 {
 
     if (socket->state() != QAbstractSocket::ConnectedState) {
-        // 已连接逻辑
+       
         return;
     }
     // 将QImage转换为字节数组（使用PNG格式压缩）
     QByteArray byteArray;
     QBuffer buffer(&byteArray);
     buffer.open(QIODevice::WriteOnly);
-    image.save(&buffer, "PNG"); // 保存为PNG格式
+    image.save(&buffer, "PNG");
 
-    // 先发送图片数据大小（4字节），方便接收方判断数据长度
+    // 先发送图片数据大小
     qint32 imageSize = byteArray.size();
     socket->write((const char*)&imageSize, sizeof(qint32));
     socket->flush();

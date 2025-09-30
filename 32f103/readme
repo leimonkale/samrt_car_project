@@ -16,12 +16,24 @@ ECHO PB14
 TRIG PB15
 
 uart :
-PA9
-PA10
+TX PA9
+RX PA10
 
 engin :
 PWM TM1 CH1 PA8
 
+lights1 £º
+ADC1_IN5 PA5
+
+lights 2:
+ADC2_IN3 PA3
+
+DHT11 £º
+PB10
+
 flag2 center
 flag3 left
 flag4 right
+flag5 turn left
+falg6 turn right
+

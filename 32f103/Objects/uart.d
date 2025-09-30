@@ -8,8 +8,9 @@
 .\objects\uart.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h
 .\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h
 .\objects\uart.o: D:\smart_car_project\32f103\RTE\Device\STM32F103C8\stm32f10x_conf.h
-.\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_dac.h
+.\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_adc.h
 .\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h
+.\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_dac.h
 .\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_i2c.h
 .\objects\uart.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
