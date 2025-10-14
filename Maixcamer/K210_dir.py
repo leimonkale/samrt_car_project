@@ -8,7 +8,7 @@ fm.register(6, fm.fpioa.UART1_RX, force=True)
 uart_A = UART(UART.UART1, 115200, 8, 0, 1, timeout=1000)
 
 # 配置参数
-black_threshold = ((0, 30))  # 黑色阈值
+black_threshold = ((0, 3))  # 黑色阈值
 roi = [0, 100, 320, 16]      # 检测区域（中间偏下）
 center_line = 160            # 屏幕中线位置
 LEFT_THRESHOLD = -30   # 左偏阈值

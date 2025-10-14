@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Smart Car Project: main.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Smart Car Project<span id="projectnumber">&#160;v0.1.7</span>
+   </div>
+   <div id="projectbrief">STM32F103-based smart car control system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('main_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;stm32f10x.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="delay_8h_source.html">delay.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="motor_8h_source.html">motor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart_8h_source.html">uart.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hcsr04_8h_source.html">hcsr04.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="engin_8h_source.html">engin.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ac9341f36c8b85c8d70f06973c2d9a5bd" id="r_ac9341f36c8b85c8d70f06973c2d9a5bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9341f36c8b85c8d70f06973c2d9a5bd">FRONT_MIN</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="memdesc:ac9341f36c8b85c8d70f06973c2d9a5bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">定义觅光判断范围  <br /></td></tr>
+<tr class="memitem:ab705b7e8a0af206ce256102b831837d8" id="r_ab705b7e8a0af206ce256102b831837d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab705b7e8a0af206ce256102b831837d8">FRONT_MAX</a>&#160;&#160;&#160;1200</td></tr>
+<tr class="memitem:aae11f4c73f7cc3a2e398e636d3b9b6a5" id="r_aae11f4c73f7cc3a2e398e636d3b9b6a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae11f4c73f7cc3a2e398e636d3b9b6a5">SAMPLE_TIMES</a>&#160;&#160;&#160;5</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a218b317716a93c10b0ccb4fe5d64ca19" id="r_a218b317716a93c10b0ccb4fe5d64ca19"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19">Light_Direction</a> { <a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660">DIR_LEFT</a> = 0
+, <a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1">DIR_FRONT</a>
+, <a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8">DIR_RIGHT</a>
+ }</td></tr>
+<tr class="memdesc:a218b317716a93c10b0ccb4fe5d64ca19"><td class="mdescLeft">&#160;</td><td class="mdescRight">定义方向枚举  <a href="#a218b317716a93c10b0ccb4fe5d64ca19">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a5d58d4274ae8d7f14054da7cfc933093" id="r_a5d58d4274ae8d7f14054da7cfc933093"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d58d4274ae8d7f14054da7cfc933093">gpio_setIn</a> ()</td></tr>
+<tr class="memdesc:a5d58d4274ae8d7f14054da7cfc933093"><td class="mdescLeft">&#160;</td><td class="mdescRight">DHT11 PB10设置管脚为输入模式  <br /></td></tr>
+<tr class="memitem:a418c84f82c35be4ad21840f636b829b4" id="r_a418c84f82c35be4ad21840f636b829b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a418c84f82c35be4ad21840f636b829b4">gpio_setOut</a> ()</td></tr>
+<tr class="memdesc:a418c84f82c35be4ad21840f636b829b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">DHT11 PB10设置管脚为输出模式  <br /></td></tr>
+<tr class="memitem:a7222b1442c9e8438e6ebc864bdf477c6" id="r_a7222b1442c9e8438e6ebc864bdf477c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7222b1442c9e8438e6ebc864bdf477c6">dht11_read</a> (int *hum, int *tem)</td></tr>
+<tr class="memdesc:a7222b1442c9e8438e6ebc864bdf477c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">多采集取平均（减少ADC抖动，采集5次，去极值后平均）  <br /></td></tr>
+<tr class="memitem:a8e6076c3e7394c4eb21cad1f43acee91" id="r_a8e6076c3e7394c4eb21cad1f43acee91"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e6076c3e7394c4eb21cad1f43acee91">ADC_Get_Average</a> (ADC_TypeDef *ADCx, uint8_t channel, uint8_t times)</td></tr>
+<tr class="memdesc:a8e6076c3e7394c4eb21cad1f43acee91"><td class="mdescLeft">&#160;</td><td class="mdescRight">多采集取平均（减少ADC抖动，采集5次，去极值后平均）  <br /></td></tr>
+<tr class="memitem:a3921ffd50bc984cf1082718a7054b074" id="r_a3921ffd50bc984cf1082718a7054b074"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19">Light_Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3921ffd50bc984cf1082718a7054b074">Get_Light_Direction</a> (void)</td></tr>
+<tr class="memdesc:a3921ffd50bc984cf1082718a7054b074"><td class="mdescLeft">&#160;</td><td class="mdescRight">觅光方向输出  <br /></td></tr>
+<tr class="memitem:ab17a4d2d1e0d8de01fd622aada388cce" id="r_ab17a4d2d1e0d8de01fd622aada388cce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab17a4d2d1e0d8de01fd622aada388cce">Hcsr04_Init</a> (void)</td></tr>
+<tr class="memdesc:ab17a4d2d1e0d8de01fd622aada388cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化超声波模块结构体  <br /></td></tr>
+<tr class="memitem:adeeda616a2335a6c7ee6844971bd3fbe" id="r_adeeda616a2335a6c7ee6844971bd3fbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeeda616a2335a6c7ee6844971bd3fbe">Motor1_Init</a> (void)</td></tr>
+<tr class="memdesc:adeeda616a2335a6c7ee6844971bd3fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机1结构体  <br /></td></tr>
+<tr class="memitem:a963a88c702aff321b1e5b822696f963e" id="r_a963a88c702aff321b1e5b822696f963e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a963a88c702aff321b1e5b822696f963e">Motor2_Init</a> (void)</td></tr>
+<tr class="memdesc:a963a88c702aff321b1e5b822696f963e"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机2结构体  <br /></td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a395d55d574ccd4694de9d23790f64681" id="r_a395d55d574ccd4694de9d23790f64681"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a395d55d574ccd4694de9d23790f64681">flag_motor1</a> = 0</td></tr>
+<tr class="memitem:a5d83e4a62021933867aab3009213f09e" id="r_a5d83e4a62021933867aab3009213f09e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d83e4a62021933867aab3009213f09e">flag_motor2</a> = 0</td></tr>
+<tr class="memitem:acf4a1e101f6ef5ca1610ea00f4784c7b" id="r_acf4a1e101f6ef5ca1610ea00f4784c7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_motor___handle_type_def.html">Motor_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf4a1e101f6ef5ca1610ea00f4784c7b">motor1</a></td></tr>
+<tr class="memitem:ad4d5241693d13fe9242f58beb9288d98" id="r_ad4d5241693d13fe9242f58beb9288d98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_motor___handle_type_def.html">Motor_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4d5241693d13fe9242f58beb9288d98">motor2</a></td></tr>
+<tr class="memitem:a9db17b639203a851981a799c6bac4187" id="r_a9db17b639203a851981a799c6bac4187"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9db17b639203a851981a799c6bac4187">hcsr04</a></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">宏定义说明</h2>
+<a id="ab705b7e8a0af206ce256102b831837d8" name="ab705b7e8a0af206ce256102b831837d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab705b7e8a0af206ce256102b831837d8">&#9670;&#160;</a></span>FRONT_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FRONT_MAX&#160;&#160;&#160;1200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9341f36c8b85c8d70f06973c2d9a5bd" name="ac9341f36c8b85c8d70f06973c2d9a5bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9341f36c8b85c8d70f06973c2d9a5bd">&#9670;&#160;</a></span>FRONT_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FRONT_MIN&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>定义觅光判断范围 </p>
+
+</div>
+</div>
+<a id="aae11f4c73f7cc3a2e398e636d3b9b6a5" name="aae11f4c73f7cc3a2e398e636d3b9b6a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae11f4c73f7cc3a2e398e636d3b9b6a5">&#9670;&#160;</a></span>SAMPLE_TIMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAMPLE_TIMES&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">枚举类型说明</h2>
+<a id="a218b317716a93c10b0ccb4fe5d64ca19" name="a218b317716a93c10b0ccb4fe5d64ca19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a218b317716a93c10b0ccb4fe5d64ca19">&#9670;&#160;</a></span>Light_Direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19">Light_Direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>定义方向枚举 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660" name="a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660"></a>DIR_LEFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1" name="a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1"></a>DIR_FRONT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8" name="a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8"></a>DIR_RIGHT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">函数说明</h2>
+<a id="a8e6076c3e7394c4eb21cad1f43acee91" name="a8e6076c3e7394c4eb21cad1f43acee91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e6076c3e7394c4eb21cad1f43acee91">&#9670;&#160;</a></span>ADC_Get_Average()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ADC_Get_Average </td>
+          <td>(</td>
+          <td class="paramtype">ADC_TypeDef *</td>          <td class="paramname"><span class="paramname"><em>ADCx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>times</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>多采集取平均（减少ADC抖动，采集5次，去极值后平均） </p>
+
+</div>
+</div>
+<a id="a7222b1442c9e8438e6ebc864bdf477c6" name="a7222b1442c9e8438e6ebc864bdf477c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7222b1442c9e8438e6ebc864bdf477c6">&#9670;&#160;</a></span>dht11_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dht11_read </td>
+          <td>(</td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>hum</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>tem</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>多采集取平均（减少ADC抖动，采集5次，去极值后平均） </p>
+
+</div>
+</div>
+<a id="a3921ffd50bc984cf1082718a7054b074" name="a3921ffd50bc984cf1082718a7054b074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3921ffd50bc984cf1082718a7054b074">&#9670;&#160;</a></span>Get_Light_Direction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a218b317716a93c10b0ccb4fe5d64ca19">Light_Direction</a> Get_Light_Direction </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>觅光方向输出 </p>
+
+</div>
+</div>
+<a id="a5d58d4274ae8d7f14054da7cfc933093" name="a5d58d4274ae8d7f14054da7cfc933093"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d58d4274ae8d7f14054da7cfc933093">&#9670;&#160;</a></span>gpio_setIn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_setIn </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DHT11 PB10设置管脚为输入模式 </p>
+
+</div>
+</div>
+<a id="a418c84f82c35be4ad21840f636b829b4" name="a418c84f82c35be4ad21840f636b829b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a418c84f82c35be4ad21840f636b829b4">&#9670;&#160;</a></span>gpio_setOut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_setOut </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DHT11 PB10设置管脚为输出模式 </p>
+
+</div>
+</div>
+<a id="ab17a4d2d1e0d8de01fd622aada388cce" name="ab17a4d2d1e0d8de01fd622aada388cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab17a4d2d1e0d8de01fd622aada388cce">&#9670;&#160;</a></span>Hcsr04_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Hcsr04_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化超声波模块结构体 </p>
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adeeda616a2335a6c7ee6844971bd3fbe" name="adeeda616a2335a6c7ee6844971bd3fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeeda616a2335a6c7ee6844971bd3fbe">&#9670;&#160;</a></span>Motor1_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Motor1_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机1结构体 </p>
+
+</div>
+</div>
+<a id="a963a88c702aff321b1e5b822696f963e" name="a963a88c702aff321b1e5b822696f963e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a963a88c702aff321b1e5b822696f963e">&#9670;&#160;</a></span>Motor2_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Motor2_Init </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机2结构体 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>电机结构体指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">无</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">变量说明</h2>
+<a id="a395d55d574ccd4694de9d23790f64681" name="a395d55d574ccd4694de9d23790f64681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a395d55d574ccd4694de9d23790f64681">&#9670;&#160;</a></span>flag_motor1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int flag_motor1 = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5d83e4a62021933867aab3009213f09e" name="a5d83e4a62021933867aab3009213f09e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d83e4a62021933867aab3009213f09e">&#9670;&#160;</a></span>flag_motor2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int flag_motor2 = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9db17b639203a851981a799c6bac4187" name="a9db17b639203a851981a799c6bac4187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9db17b639203a851981a799c6bac4187">&#9670;&#160;</a></span>hcsr04</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a> hcsr04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf4a1e101f6ef5ca1610ea00f4784c7b" name="acf4a1e101f6ef5ca1610ea00f4784c7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4a1e101f6ef5ca1610ea00f4784c7b">&#9670;&#160;</a></span>motor1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_motor___handle_type_def.html">Motor_HandleTypeDef</a> motor1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad4d5241693d13fe9242f58beb9288d98" name="ad4d5241693d13fe9242f58beb9288d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d5241693d13fe9242f58beb9288d98">&#9670;&#160;</a></span>motor2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_motor___handle_type_def.html">Motor_HandleTypeDef</a> motor2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="main_8c.html">main.c</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

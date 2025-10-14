@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Smart Car Project: hcsr04.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Smart Car Project<span id="projectnumber">&#160;v0.1.7</span>
+   </div>
+   <div id="projectbrief">STM32F103-based smart car control system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('hcsr04_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">hcsr04.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="hcsr04_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// hcsr04.h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef __HCSR04_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define __HCSR04_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;stm32f10x.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// 超声波模块结构体定义</span></div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html">    8</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#a3abe8489cf273bbb4fad8e7e1c692f54">    9</a></span>    GPIO_TypeDef* <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#a3abe8489cf273bbb4fad8e7e1c692f54">TRIG_GPIOx</a>;   <span class="comment">// 触发引脚GPIO</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#adc20e179c3b8594f6b0c6ebc641779dc">   10</a></span>    uint16_t <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#adc20e179c3b8594f6b0c6ebc641779dc">TRIG_GPIO_Pin</a>;     <span class="comment">// 触发引脚</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#a983f3b12f262a0f5c871f79787e8eddf">   11</a></span>    GPIO_TypeDef* <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#a983f3b12f262a0f5c871f79787e8eddf">ECHO_GPIOx</a>;   <span class="comment">// 回响引脚GPIO</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#ac88098c0018d30953a87b4592da46d80">   12</a></span>    uint16_t <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#ac88098c0018d30953a87b4592da46d80">ECHO_GPIO_Pin</a>;     <span class="comment">// 回响引脚</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#aeb5226056bee7897f79ab33c4d9a92b2">   13</a></span>    TIM_TypeDef* <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#aeb5226056bee7897f79ab33c4d9a92b2">TIMx</a>;          <span class="comment">// 用于计时的定时器</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#adfb324aca41e33400c35c3ba0a551bab">   14</a></span>    uint32_t <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#adfb324aca41e33400c35c3ba0a551bab">timeout_us</a>;        <span class="comment">// 超时时间(微秒)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_h_c_s_r04___handle_type_def.html#a3a37309f968d85c6fd81b93430c58ae7">   15</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_h_c_s_r04___handle_type_def.html#a3a37309f968d85c6fd81b93430c58ae7">distance</a>;             <span class="comment">// 当前距离(厘米)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>} <a class="code hl_struct" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a>;</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// 函数声明</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="hcsr04_8h.html#a3669e0d4f6cad21ae3649346d4987460">HCSR04_Init</a>(<a class="code hl_struct" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a>* <a class="code hl_variable" href="main_8c.html#a9db17b639203a851981a799c6bac4187">hcsr04</a>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>uint8_t <a class="code hl_function" href="hcsr04_8h.html#a5a55b08ceda29c8e3387b8818ea71573">HCSR04_Measure</a>(<a class="code hl_struct" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a>* <a class="code hl_variable" href="main_8c.html#a9db17b639203a851981a799c6bac4187">hcsr04</a>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">float</span> <a class="code hl_function" href="hcsr04_8h.html#a5c0a62505caa59a2f1c1036b71b9ea1d">HCSR04_GetDistance</a>(<a class="code hl_struct" href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a>* <a class="code hl_variable" href="main_8c.html#a9db17b639203a851981a799c6bac4187">hcsr04</a>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif </span><span class="comment">/* __HCSR04_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="ttc" id="ahcsr04_8h_html_a3669e0d4f6cad21ae3649346d4987460"><div class="ttname"><a href="hcsr04_8h.html#a3669e0d4f6cad21ae3649346d4987460">HCSR04_Init</a></div><div class="ttdeci">void HCSR04_Init(HCSR04_HandleTypeDef *hcsr04)</div><div class="ttdoc">初始化超声波模块</div><div class="ttdef"><b>定义</b> hcsr04.c:11</div></div>
+<div class="ttc" id="ahcsr04_8h_html_a5a55b08ceda29c8e3387b8818ea71573"><div class="ttname"><a href="hcsr04_8h.html#a5a55b08ceda29c8e3387b8818ea71573">HCSR04_Measure</a></div><div class="ttdeci">uint8_t HCSR04_Measure(HCSR04_HandleTypeDef *hcsr04)</div><div class="ttdoc">测量距离</div><div class="ttdef"><b>定义</b> hcsr04.c:64</div></div>
+<div class="ttc" id="ahcsr04_8h_html_a5c0a62505caa59a2f1c1036b71b9ea1d"><div class="ttname"><a href="hcsr04_8h.html#a5c0a62505caa59a2f1c1036b71b9ea1d">HCSR04_GetDistance</a></div><div class="ttdeci">float HCSR04_GetDistance(HCSR04_HandleTypeDef *hcsr04)</div><div class="ttdoc">获取当前距离</div><div class="ttdef"><b>定义</b> hcsr04.c:110</div></div>
+<div class="ttc" id="amain_8c_html_a9db17b639203a851981a799c6bac4187"><div class="ttname"><a href="main_8c.html#a9db17b639203a851981a799c6bac4187">hcsr04</a></div><div class="ttdeci">HCSR04_HandleTypeDef hcsr04</div><div class="ttdef"><b>定义</b> main.c:12</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html">HCSR04_HandleTypeDef</a></div><div class="ttdef"><b>定义</b> hcsr04.h:8</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_a3a37309f968d85c6fd81b93430c58ae7"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#a3a37309f968d85c6fd81b93430c58ae7">HCSR04_HandleTypeDef::distance</a></div><div class="ttdeci">float distance</div><div class="ttdef"><b>定义</b> hcsr04.h:15</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_a3abe8489cf273bbb4fad8e7e1c692f54"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#a3abe8489cf273bbb4fad8e7e1c692f54">HCSR04_HandleTypeDef::TRIG_GPIOx</a></div><div class="ttdeci">GPIO_TypeDef * TRIG_GPIOx</div><div class="ttdef"><b>定义</b> hcsr04.h:9</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_a983f3b12f262a0f5c871f79787e8eddf"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#a983f3b12f262a0f5c871f79787e8eddf">HCSR04_HandleTypeDef::ECHO_GPIOx</a></div><div class="ttdeci">GPIO_TypeDef * ECHO_GPIOx</div><div class="ttdef"><b>定义</b> hcsr04.h:11</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_ac88098c0018d30953a87b4592da46d80"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#ac88098c0018d30953a87b4592da46d80">HCSR04_HandleTypeDef::ECHO_GPIO_Pin</a></div><div class="ttdeci">uint16_t ECHO_GPIO_Pin</div><div class="ttdef"><b>定义</b> hcsr04.h:12</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_adc20e179c3b8594f6b0c6ebc641779dc"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#adc20e179c3b8594f6b0c6ebc641779dc">HCSR04_HandleTypeDef::TRIG_GPIO_Pin</a></div><div class="ttdeci">uint16_t TRIG_GPIO_Pin</div><div class="ttdef"><b>定义</b> hcsr04.h:10</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_adfb324aca41e33400c35c3ba0a551bab"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#adfb324aca41e33400c35c3ba0a551bab">HCSR04_HandleTypeDef::timeout_us</a></div><div class="ttdeci">uint32_t timeout_us</div><div class="ttdef"><b>定义</b> hcsr04.h:14</div></div>
+<div class="ttc" id="astruct_h_c_s_r04___handle_type_def_html_aeb5226056bee7897f79ab33c4d9a92b2"><div class="ttname"><a href="struct_h_c_s_r04___handle_type_def.html#aeb5226056bee7897f79ab33c4d9a92b2">HCSR04_HandleTypeDef::TIMx</a></div><div class="ttdeci">TIM_TypeDef * TIMx</div><div class="ttdef"><b>定义</b> hcsr04.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="hcsr04_8h.html">hcsr04.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

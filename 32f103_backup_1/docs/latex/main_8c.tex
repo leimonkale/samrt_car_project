@@ -1,0 +1,251 @@
+\doxysection{main.\+c 文件参考}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include "{}delay.\+h"{}}\newline
+{\ttfamily \#include "{}motor.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}hcsr04.\+h"{}}\newline
+{\ttfamily \#include "{}engin.\+h"{}}\newline
+\doxysubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_ac9341f36c8b85c8d70f06973c2d9a5bd}{FRONT\+\_\+\+MIN}}~1000
+\begin{DoxyCompactList}\small\item\em 定义觅光判断范围 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{main_8c_ab705b7e8a0af206ce256102b831837d8}{FRONT\+\_\+\+MAX}}~1200
+\item 
+\#define \mbox{\hyperlink{main_8c_aae11f4c73f7cc3a2e398e636d3b9b6a5}{SAMPLE\+\_\+\+TIMES}}~5
+\end{DoxyCompactItemize}
+\doxysubsubsection*{枚举}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19}{Light\+\_\+\+Direction}} \{ \mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660}{DIR\+\_\+\+LEFT}} = 0
+, \mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1}{DIR\+\_\+\+FRONT}}
+, \mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8}{DIR\+\_\+\+RIGHT}}
+ \}
+\begin{DoxyCompactList}\small\item\em 定义方向枚举 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a5d58d4274ae8d7f14054da7cfc933093}{gpio\+\_\+set\+In}} ()
+\begin{DoxyCompactList}\small\item\em DHT11 PB10设置管脚为输入模式 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a418c84f82c35be4ad21840f636b829b4}{gpio\+\_\+set\+Out}} ()
+\begin{DoxyCompactList}\small\item\em DHT11 PB10设置管脚为输出模式 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a7222b1442c9e8438e6ebc864bdf477c6}{dht11\+\_\+read}} (int \texorpdfstring{$\ast$}{*}hum, int \texorpdfstring{$\ast$}{*}tem)
+\begin{DoxyCompactList}\small\item\em 多采集取平均（减少\+ADC抖动，采集5次，去极值后平均） \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{main_8c_a8e6076c3e7394c4eb21cad1f43acee91}{ADC\+\_\+\+Get\+\_\+\+Average}} (ADC\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}ADCx, uint8\+\_\+t channel, uint8\+\_\+t times)
+\begin{DoxyCompactList}\small\item\em 多采集取平均（减少\+ADC抖动，采集5次，去极值后平均） \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19}{Light\+\_\+\+Direction}} \mbox{\hyperlink{main_8c_a3921ffd50bc984cf1082718a7054b074}{Get\+\_\+\+Light\+\_\+\+Direction}} (void)
+\begin{DoxyCompactList}\small\item\em 觅光方向输出 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ab17a4d2d1e0d8de01fd622aada388cce}{Hcsr04\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化超声波模块结构体 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_adeeda616a2335a6c7ee6844971bd3fbe}{Motor1\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化电机1结构体 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a963a88c702aff321b1e5b822696f963e}{Motor2\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化电机2结构体 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a395d55d574ccd4694de9d23790f64681}{flag\+\_\+motor1}} = 0
+\item 
+int \mbox{\hyperlink{main_8c_a5d83e4a62021933867aab3009213f09e}{flag\+\_\+motor2}} = 0
+\item 
+\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{main_8c_acf4a1e101f6ef5ca1610ea00f4784c7b}{motor1}}
+\item 
+\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{main_8c_ad4d5241693d13fe9242f58beb9288d98}{motor2}}
+\item 
+\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{main_8c_a9db17b639203a851981a799c6bac4187}{hcsr04}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{main_8c_doc-define-members}
+\doxysubsection{宏定义说明}
+\Hypertarget{main_8c_ab705b7e8a0af206ce256102b831837d8}\index{main.c@{main.c}!FRONT\_MAX@{FRONT\_MAX}}
+\index{FRONT\_MAX@{FRONT\_MAX}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{FRONT\_MAX}{FRONT\_MAX}}
+{\footnotesize\ttfamily \label{main_8c_ab705b7e8a0af206ce256102b831837d8} 
+\#define FRONT\+\_\+\+MAX~1200}
+
+\Hypertarget{main_8c_ac9341f36c8b85c8d70f06973c2d9a5bd}\index{main.c@{main.c}!FRONT\_MIN@{FRONT\_MIN}}
+\index{FRONT\_MIN@{FRONT\_MIN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{FRONT\_MIN}{FRONT\_MIN}}
+{\footnotesize\ttfamily \label{main_8c_ac9341f36c8b85c8d70f06973c2d9a5bd} 
+\#define FRONT\+\_\+\+MIN~1000}
+
+
+
+定义觅光判断范围 
+
+\Hypertarget{main_8c_aae11f4c73f7cc3a2e398e636d3b9b6a5}\index{main.c@{main.c}!SAMPLE\_TIMES@{SAMPLE\_TIMES}}
+\index{SAMPLE\_TIMES@{SAMPLE\_TIMES}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_TIMES}{SAMPLE\_TIMES}}
+{\footnotesize\ttfamily \label{main_8c_aae11f4c73f7cc3a2e398e636d3b9b6a5} 
+\#define SAMPLE\+\_\+\+TIMES~5}
+
+
+
+\label{doc-enum-members}
+\Hypertarget{main_8c_doc-enum-members}
+\doxysubsection{枚举类型说明}
+\Hypertarget{main_8c_a218b317716a93c10b0ccb4fe5d64ca19}\index{main.c@{main.c}!Light\_Direction@{Light\_Direction}}
+\index{Light\_Direction@{Light\_Direction}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Light\_Direction}{Light\_Direction}}
+{\footnotesize\ttfamily \label{main_8c_a218b317716a93c10b0ccb4fe5d64ca19} 
+enum \mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19}{Light\+\_\+\+Direction}}}
+
+
+
+定义方向枚举 
+
+\begin{DoxyEnumFields}[2]{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIR\_LEFT@{DIR\_LEFT}!main.c@{main.c}}\index{main.c@{main.c}!DIR\_LEFT@{DIR\_LEFT}}}\Hypertarget{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660}\label{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a1307dc42d06472935155dcbe283bc660} 
+DIR\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIR\_FRONT@{DIR\_FRONT}!main.c@{main.c}}\index{main.c@{main.c}!DIR\_FRONT@{DIR\_FRONT}}}\Hypertarget{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1}\label{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a71635b0d1087a3232f5cfc2f86913aa1} 
+DIR\+\_\+\+FRONT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIR\_RIGHT@{DIR\_RIGHT}!main.c@{main.c}}\index{main.c@{main.c}!DIR\_RIGHT@{DIR\_RIGHT}}}\Hypertarget{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8}\label{main_8c_a218b317716a93c10b0ccb4fe5d64ca19a5dd21ef3d450f62c44082756cab8f6f8} 
+DIR\+\_\+\+RIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{main_8c_doc-func-members}
+\doxysubsection{函数说明}
+\Hypertarget{main_8c_a8e6076c3e7394c4eb21cad1f43acee91}\index{main.c@{main.c}!ADC\_Get\_Average@{ADC\_Get\_Average}}
+\index{ADC\_Get\_Average@{ADC\_Get\_Average}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_Get\_Average()}{ADC\_Get\_Average()}}
+{\footnotesize\ttfamily \label{main_8c_a8e6076c3e7394c4eb21cad1f43acee91} 
+uint16\+\_\+t ADC\+\_\+\+Get\+\_\+\+Average (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{ADCx}{, }\item[{uint8\+\_\+t}]{channel}{, }\item[{uint8\+\_\+t}]{times}{}\end{DoxyParamCaption})}
+
+
+
+多采集取平均（减少\+ADC抖动，采集5次，去极值后平均） 
+
+\Hypertarget{main_8c_a7222b1442c9e8438e6ebc864bdf477c6}\index{main.c@{main.c}!dht11\_read@{dht11\_read}}
+\index{dht11\_read@{dht11\_read}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{dht11\_read()}{dht11\_read()}}
+{\footnotesize\ttfamily \label{main_8c_a7222b1442c9e8438e6ebc864bdf477c6} 
+int dht11\+\_\+read (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{hum}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tem}{}\end{DoxyParamCaption})}
+
+
+
+多采集取平均（减少\+ADC抖动，采集5次，去极值后平均） 
+
+\Hypertarget{main_8c_a3921ffd50bc984cf1082718a7054b074}\index{main.c@{main.c}!Get\_Light\_Direction@{Get\_Light\_Direction}}
+\index{Get\_Light\_Direction@{Get\_Light\_Direction}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Light\_Direction()}{Get\_Light\_Direction()}}
+{\footnotesize\ttfamily \label{main_8c_a3921ffd50bc984cf1082718a7054b074} 
+\mbox{\hyperlink{main_8c_a218b317716a93c10b0ccb4fe5d64ca19}{Light\+\_\+\+Direction}} Get\+\_\+\+Light\+\_\+\+Direction (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+觅光方向输出 
+
+\Hypertarget{main_8c_a5d58d4274ae8d7f14054da7cfc933093}\index{main.c@{main.c}!gpio\_setIn@{gpio\_setIn}}
+\index{gpio\_setIn@{gpio\_setIn}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{gpio\_setIn()}{gpio\_setIn()}}
+{\footnotesize\ttfamily \label{main_8c_a5d58d4274ae8d7f14054da7cfc933093} 
+void gpio\+\_\+set\+In (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+DHT11 PB10设置管脚为输入模式 
+
+\Hypertarget{main_8c_a418c84f82c35be4ad21840f636b829b4}\index{main.c@{main.c}!gpio\_setOut@{gpio\_setOut}}
+\index{gpio\_setOut@{gpio\_setOut}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{gpio\_setOut()}{gpio\_setOut()}}
+{\footnotesize\ttfamily \label{main_8c_a418c84f82c35be4ad21840f636b829b4} 
+void gpio\+\_\+set\+Out (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+DHT11 PB10设置管脚为输出模式 
+
+\Hypertarget{main_8c_ab17a4d2d1e0d8de01fd622aada388cce}\index{main.c@{main.c}!Hcsr04\_Init@{Hcsr04\_Init}}
+\index{Hcsr04\_Init@{Hcsr04\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Hcsr04\_Init()}{Hcsr04\_Init()}}
+{\footnotesize\ttfamily \label{main_8c_ab17a4d2d1e0d8de01fd622aada388cce} 
+void Hcsr04\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+初始化超声波模块结构体 
+
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8c_adeeda616a2335a6c7ee6844971bd3fbe}\index{main.c@{main.c}!Motor1\_Init@{Motor1\_Init}}
+\index{Motor1\_Init@{Motor1\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Motor1\_Init()}{Motor1\_Init()}}
+{\footnotesize\ttfamily \label{main_8c_adeeda616a2335a6c7ee6844971bd3fbe} 
+void Motor1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+初始化电机1结构体 
+
+\Hypertarget{main_8c_a963a88c702aff321b1e5b822696f963e}\index{main.c@{main.c}!Motor2\_Init@{Motor2\_Init}}
+\index{Motor2\_Init@{Motor2\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Motor2\_Init()}{Motor2\_Init()}}
+{\footnotesize\ttfamily \label{main_8c_a963a88c702aff321b1e5b822696f963e} 
+void Motor2\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+初始化电机2结构体 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\label{doc-var-members}
+\Hypertarget{main_8c_doc-var-members}
+\doxysubsection{变量说明}
+\Hypertarget{main_8c_a395d55d574ccd4694de9d23790f64681}\index{main.c@{main.c}!flag\_motor1@{flag\_motor1}}
+\index{flag\_motor1@{flag\_motor1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{flag\_motor1}{flag\_motor1}}
+{\footnotesize\ttfamily \label{main_8c_a395d55d574ccd4694de9d23790f64681} 
+int flag\+\_\+motor1 = 0}
+
+\Hypertarget{main_8c_a5d83e4a62021933867aab3009213f09e}\index{main.c@{main.c}!flag\_motor2@{flag\_motor2}}
+\index{flag\_motor2@{flag\_motor2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{flag\_motor2}{flag\_motor2}}
+{\footnotesize\ttfamily \label{main_8c_a5d83e4a62021933867aab3009213f09e} 
+int flag\+\_\+motor2 = 0}
+
+\Hypertarget{main_8c_a9db17b639203a851981a799c6bac4187}\index{main.c@{main.c}!hcsr04@{hcsr04}}
+\index{hcsr04@{hcsr04}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hcsr04}{hcsr04}}
+{\footnotesize\ttfamily \label{main_8c_a9db17b639203a851981a799c6bac4187} 
+\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} hcsr04}
+
+\Hypertarget{main_8c_acf4a1e101f6ef5ca1610ea00f4784c7b}\index{main.c@{main.c}!motor1@{motor1}}
+\index{motor1@{motor1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{motor1}{motor1}}
+{\footnotesize\ttfamily \label{main_8c_acf4a1e101f6ef5ca1610ea00f4784c7b} 
+\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} motor1}
+
+\Hypertarget{main_8c_ad4d5241693d13fe9242f58beb9288d98}\index{main.c@{main.c}!motor2@{motor2}}
+\index{motor2@{motor2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{motor2}{motor2}}
+{\footnotesize\ttfamily \label{main_8c_ad4d5241693d13fe9242f58beb9288d98} 
+\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} motor2}
+

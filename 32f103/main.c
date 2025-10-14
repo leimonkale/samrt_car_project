@@ -225,7 +225,6 @@ int main()
 	Motor2_Init();
 	gpio_init();
 	tim1_init();
-	
 		
 	uart_init(115200);
 	
@@ -302,25 +301,25 @@ int main()
 		motor1.speed = 70;
 		motor2.speed = 70;
 		Motor_Start(&motor1);
-	    Motor_Start(&motor2);
+		Motor_Start(&motor2);
 		my_delay_ms(5000);
 		motor1.dir = MOTOR_BACKWARD;
 		motor1.speed = 100;
 		motor2.speed = 100;
 		Motor_Start(&motor1);
-	    Motor_Start(&motor2);
+		Motor_Start(&motor2);
 		my_delay_ms(5000);*/
 		motor1.dir = MOTOR_FORWARD;
 		motor2.dir = MOTOR_FORWARD;
-		motor1.speed = 100;
-		motor2.speed = 85;
+		motor1.speed = 80;         //”“¬÷
+		motor2.speed = 71;
 		Motor_Start(&motor1);
-	    Motor_Start(&motor2);
+		Motor_Start(&motor2);
 		flag1 = 0;
 		}
 		if(flag2){
-			Motor_SetSpeed(&motor1,100);
-			Motor_SetSpeed(&motor2,100);
+			Motor_SetSpeed(&motor1,80);
+			Motor_SetSpeed(&motor2,80);
 			Motor_Start(&motor1);
 			Motor_Start(&motor2);
 			flag2 = 0;
@@ -343,14 +342,14 @@ int main()
 		if(flag6){
 			Motor_Stop(&motor2);
 			Motor_Stop(&motor1);
-			my_delay_ms(5000);
+			my_delay_ms(3000);
 			Motor_Start(&motor2);
-			my_delay_ms(800);
+			my_delay_ms(200);
 			flag6 = 0;
 		}
 		if(flag7){}
 		
 		my_delay_ms(10);
-	
 	}
+	
 }

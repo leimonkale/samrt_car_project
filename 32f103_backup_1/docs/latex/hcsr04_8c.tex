@@ -1,0 +1,79 @@
+\doxysection{hcsr04.\+c 文件参考}
+\hypertarget{hcsr04_8c}{}\label{hcsr04_8c}\index{hcsr04.c@{hcsr04.c}}
+{\ttfamily \#include "{}hcsr04.\+h"{}}\newline
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{hcsr04_8c_a3669e0d4f6cad21ae3649346d4987460}{HCSR04\+\_\+\+Init}} (\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_a9db17b639203a851981a799c6bac4187}{hcsr04}})
+\begin{DoxyCompactList}\small\item\em 初始化超声波模块 \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{hcsr04_8c_a5a55b08ceda29c8e3387b8818ea71573}{HCSR04\+\_\+\+Measure}} (\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_a9db17b639203a851981a799c6bac4187}{hcsr04}})
+\begin{DoxyCompactList}\small\item\em 测量距离 \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{hcsr04_8c_a5c0a62505caa59a2f1c1036b71b9ea1d}{HCSR04\+\_\+\+Get\+Distance}} (\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_a9db17b639203a851981a799c6bac4187}{hcsr04}})
+\begin{DoxyCompactList}\small\item\em 获取当前距离 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{hcsr04_8c_doc-func-members}
+\doxysubsection{函数说明}
+\Hypertarget{hcsr04_8c_a5c0a62505caa59a2f1c1036b71b9ea1d}\index{hcsr04.c@{hcsr04.c}!HCSR04\_GetDistance@{HCSR04\_GetDistance}}
+\index{HCSR04\_GetDistance@{HCSR04\_GetDistance}!hcsr04.c@{hcsr04.c}}
+\doxysubsubsection{\texorpdfstring{HCSR04\_GetDistance()}{HCSR04\_GetDistance()}}
+{\footnotesize\ttfamily \label{hcsr04_8c_a5c0a62505caa59a2f1c1036b71b9ea1d} 
+float HCSR04\+\_\+\+Get\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{hcsr04}{}\end{DoxyParamCaption})}
+
+
+
+获取当前距离 
+
+
+\begin{DoxyParams}{参数}
+{\em hcsr04} & 超声波模块结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 距离值(厘米),负数表示超时} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{hcsr04_8c_a3669e0d4f6cad21ae3649346d4987460}\index{hcsr04.c@{hcsr04.c}!HCSR04\_Init@{HCSR04\_Init}}
+\index{HCSR04\_Init@{HCSR04\_Init}!hcsr04.c@{hcsr04.c}}
+\doxysubsubsection{\texorpdfstring{HCSR04\_Init()}{HCSR04\_Init()}}
+{\footnotesize\ttfamily \label{hcsr04_8c_a3669e0d4f6cad21ae3649346d4987460} 
+void HCSR04\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{hcsr04}{}\end{DoxyParamCaption})}
+
+
+
+初始化超声波模块 
+
+
+\begin{DoxyParams}{参数}
+{\em hcsr04} & 超声波模块结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+使能\+GPIO时钟\Hypertarget{hcsr04_8c_a5a55b08ceda29c8e3387b8818ea71573}\index{hcsr04.c@{hcsr04.c}!HCSR04\_Measure@{HCSR04\_Measure}}
+\index{HCSR04\_Measure@{HCSR04\_Measure}!hcsr04.c@{hcsr04.c}}
+\doxysubsubsection{\texorpdfstring{HCSR04\_Measure()}{HCSR04\_Measure()}}
+{\footnotesize\ttfamily \label{hcsr04_8c_a5a55b08ceda29c8e3387b8818ea71573} 
+uint8\+\_\+t HCSR04\+\_\+\+Measure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_h_c_s_r04___handle_type_def}{HCSR04\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{hcsr04}{}\end{DoxyParamCaption})}
+
+
+
+测量距离 
+
+
+\begin{DoxyParams}{参数}
+{\em hcsr04} & 超声波模块结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 0\+:成功} & 1\+:超时 \\
+\hline
+\end{DoxyRetVals}

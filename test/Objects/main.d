@@ -10,6 +10,7 @@
 .\objects\main.o: D:\smart_car_project\test\RTE\Device\STM32F103C8\stm32f10x_conf.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_dac.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h
+.\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_exti.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_i2c.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
@@ -17,5 +18,3 @@
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: D:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\misc.h
-.\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h

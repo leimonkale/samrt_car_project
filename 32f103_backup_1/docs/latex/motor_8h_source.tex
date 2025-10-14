@@ -1,0 +1,39 @@
+\doxysection{motor.\+h}
+\hypertarget{motor_8h_source}{}\label{motor_8h_source}\mbox{\hyperlink{motor_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_MOTOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_MOTOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}stm32f10x.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 电机方向枚举}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfaf0f1281d2a842ac5b2cfcea0448dfe8d}{MOTOR\_FORWARD}}\ =\ 0,\ \ \textcolor{comment}{//\ 正转}}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfa5af0cbc39d4088d3c93dc6246f9fc048}{MOTOR\_BACKWARD}}\ \ \ \ \ \ \textcolor{comment}{//\ 反转}}
+\DoxyCodeLine{00010\ \}\ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\_DirectionTypeDef}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ 电机结构体定义}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00014\ \ \ \ \ TIM\_TypeDef*\ \mbox{\hyperlink{struct_motor___handle_type_def_ab713445a130d729f1d97a9856451585c}{TIMx}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 定时器}}
+\DoxyCodeLine{00015\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_motor___handle_type_def_a229f5f3ac669c3c5d1b80b7d8d72f05e}{TIM\_Channel}};\ \ \ \ \ \ \ \textcolor{comment}{//\ 定时器通道}}
+\DoxyCodeLine{00016\ \ \ \ \ GPIO\_TypeDef*\ \mbox{\hyperlink{struct_motor___handle_type_def_a03951f377868462dbd3f0c67f931f483}{PWM\_GPIOx}};\ \ \ \ \textcolor{comment}{//\ PWM引脚端口}}
+\DoxyCodeLine{00017\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_motor___handle_type_def_a7919f074a7f0f36a5ff6f37a62a1c07e}{PWM\_GPIO\_Pin}};\ \ \ \ \ \ \textcolor{comment}{//\ PWM引脚}}
+\DoxyCodeLine{00018\ \ \ \ \ GPIO\_TypeDef*\ \mbox{\hyperlink{struct_motor___handle_type_def_a0333910a32d993ee8e708578ccdb0f63}{IN1\_GPIOx}};\ \ \ \ \textcolor{comment}{//\ IN1引脚端口}}
+\DoxyCodeLine{00019\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_motor___handle_type_def_ae9f9128f13c5ea1bf3c10c7f732166ec}{IN1\_GPIO\_Pin}};\ \ \ \ \ \ \textcolor{comment}{//\ IN1引脚}}
+\DoxyCodeLine{00020\ \ \ \ \ GPIO\_TypeDef*\ \mbox{\hyperlink{struct_motor___handle_type_def_a5146af5cf13207a4a2b3adc684967095}{IN2\_GPIOx}};\ \ \ \ \textcolor{comment}{//\ IN2引脚端口}}
+\DoxyCodeLine{00021\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_motor___handle_type_def_ad09e4f01c58f62e49ddf36e61cbe7905}{IN2\_GPIO\_Pin}};\ \ \ \ \ \ \textcolor{comment}{//\ IN2引脚}}
+\DoxyCodeLine{00022\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_motor___handle_type_def_a482996f8d0722d916a4d69440aaccb1f}{speed}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 当前速度(0-\/100)}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\_DirectionTypeDef}}\ \mbox{\hyperlink{struct_motor___handle_type_def_ae2c6ae65fabf5a9e124f31324bd8744d}{dir}};\ \textcolor{comment}{//\ 当前方向}}
+\DoxyCodeLine{00024\ \}\ \mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ 函数声明}}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a71cb5e409790c730d3e32134d9b72f69}{Motor\_Init}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a996276989850b5bc4c65919a0816a356}{Motor\_SetDirection}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor,\ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\_DirectionTypeDef}}\ dir);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a51ad69004efb9d53a95b52e8efd43186}{Motor\_SetSpeed}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor,\ uint8\_t\ speed);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a58fb6bdb72aa815637bfcfae1a6086be}{Motor\_Start}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_ad47cd4ae4aeb8b82179d34458ad345b0}{Motor\_Stop}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a37364adca79243dca139090c6515f0c9}{Motor\_ToggleDirection}}(\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\_HandleTypeDef}}*\ motor);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_MOTOR\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

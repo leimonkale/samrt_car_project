@@ -1,0 +1,180 @@
+\doxysection{motor.\+h 文件参考}
+\hypertarget{motor_8h}{}\label{motor_8h}\index{motor.h@{motor.h}}
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+\doxysubsubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{枚举}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\+\_\+\+Direction\+Type\+Def}} \{ \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfaf0f1281d2a842ac5b2cfcea0448dfe8d}{MOTOR\+\_\+\+FORWARD}} = 0
+, \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfa5af0cbc39d4088d3c93dc6246f9fc048}{MOTOR\+\_\+\+BACKWARD}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{motor_8h_a71cb5e409790c730d3e32134d9b72f69}{Motor\+\_\+\+Init}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor)
+\begin{DoxyCompactList}\small\item\em 初始化电机控制 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_a996276989850b5bc4c65919a0816a356}{Motor\+\_\+\+Set\+Direction}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor, \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\+\_\+\+Direction\+Type\+Def}} dir)
+\begin{DoxyCompactList}\small\item\em 设置电机方向 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_a51ad69004efb9d53a95b52e8efd43186}{Motor\+\_\+\+Set\+Speed}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor, uint8\+\_\+t speed)
+\begin{DoxyCompactList}\small\item\em 设置电机速度 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_a58fb6bdb72aa815637bfcfae1a6086be}{Motor\+\_\+\+Start}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor)
+\begin{DoxyCompactList}\small\item\em 启动电机(保持当前速度和方向) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_ad47cd4ae4aeb8b82179d34458ad345b0}{Motor\+\_\+\+Stop}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor)
+\begin{DoxyCompactList}\small\item\em 停止电机 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_a37364adca79243dca139090c6515f0c9}{Motor\+\_\+\+Toggle\+Direction}} (\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}motor)
+\begin{DoxyCompactList}\small\item\em 切换电机方向 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{motor_8h_doc-enum-members}
+\doxysubsection{枚举类型说明}
+\Hypertarget{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}\index{motor.h@{motor.h}!Motor\_DirectionTypeDef@{Motor\_DirectionTypeDef}}
+\index{Motor\_DirectionTypeDef@{Motor\_DirectionTypeDef}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_DirectionTypeDef}{Motor\_DirectionTypeDef}}
+{\footnotesize\ttfamily \label{motor_8h_a09a2dce578b7bd009d01afb42c2b59df} 
+enum \mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\+\_\+\+Direction\+Type\+Def}}}
+
+\begin{DoxyEnumFields}[2]{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOTOR\_FORWARD@{MOTOR\_FORWARD}!motor.h@{motor.h}}\index{motor.h@{motor.h}!MOTOR\_FORWARD@{MOTOR\_FORWARD}}}\Hypertarget{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfaf0f1281d2a842ac5b2cfcea0448dfe8d}\label{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfaf0f1281d2a842ac5b2cfcea0448dfe8d} 
+MOTOR\+\_\+\+FORWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOTOR\_BACKWARD@{MOTOR\_BACKWARD}!motor.h@{motor.h}}\index{motor.h@{motor.h}!MOTOR\_BACKWARD@{MOTOR\_BACKWARD}}}\Hypertarget{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfa5af0cbc39d4088d3c93dc6246f9fc048}\label{motor_8h_a09a2dce578b7bd009d01afb42c2b59dfa5af0cbc39d4088d3c93dc6246f9fc048} 
+MOTOR\+\_\+\+BACKWARD&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{motor_8h_doc-func-members}
+\doxysubsection{函数说明}
+\Hypertarget{motor_8h_a71cb5e409790c730d3e32134d9b72f69}\index{motor.h@{motor.h}!Motor\_Init@{Motor\_Init}}
+\index{Motor\_Init@{Motor\_Init}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_Init()}{Motor\_Init()}}
+{\footnotesize\ttfamily \label{motor_8h_a71cb5e409790c730d3e32134d9b72f69} 
+void Motor\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{}\end{DoxyParamCaption})}
+
+
+
+初始化电机控制 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{motor_8h_a996276989850b5bc4c65919a0816a356}\index{motor.h@{motor.h}!Motor\_SetDirection@{Motor\_SetDirection}}
+\index{Motor\_SetDirection@{Motor\_SetDirection}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_SetDirection()}{Motor\_SetDirection()}}
+{\footnotesize\ttfamily \label{motor_8h_a996276989850b5bc4c65919a0816a356} 
+void Motor\+\_\+\+Set\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{, }\item[{\mbox{\hyperlink{motor_8h_a09a2dce578b7bd009d01afb42c2b59df}{Motor\+\_\+\+Direction\+Type\+Def}}}]{dir}{}\end{DoxyParamCaption})}
+
+
+
+设置电机方向 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+{\em dir} & 方向(MOTOR\+\_\+\+FORWARD或\+MOTOR\+\_\+\+BACKWARD) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{motor_8h_a51ad69004efb9d53a95b52e8efd43186}\index{motor.h@{motor.h}!Motor\_SetSpeed@{Motor\_SetSpeed}}
+\index{Motor\_SetSpeed@{Motor\_SetSpeed}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_SetSpeed()}{Motor\_SetSpeed()}}
+{\footnotesize\ttfamily \label{motor_8h_a51ad69004efb9d53a95b52e8efd43186} 
+void Motor\+\_\+\+Set\+Speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{, }\item[{uint8\+\_\+t}]{speed}{}\end{DoxyParamCaption})}
+
+
+
+设置电机速度 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+{\em speed} & 速度值(0-\/100) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{motor_8h_a58fb6bdb72aa815637bfcfae1a6086be}\index{motor.h@{motor.h}!Motor\_Start@{Motor\_Start}}
+\index{Motor\_Start@{Motor\_Start}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_Start()}{Motor\_Start()}}
+{\footnotesize\ttfamily \label{motor_8h_a58fb6bdb72aa815637bfcfae1a6086be} 
+void Motor\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{}\end{DoxyParamCaption})}
+
+
+
+启动电机(保持当前速度和方向) 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{motor_8h_ad47cd4ae4aeb8b82179d34458ad345b0}\index{motor.h@{motor.h}!Motor\_Stop@{Motor\_Stop}}
+\index{Motor\_Stop@{Motor\_Stop}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_Stop()}{Motor\_Stop()}}
+{\footnotesize\ttfamily \label{motor_8h_ad47cd4ae4aeb8b82179d34458ad345b0} 
+void Motor\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{}\end{DoxyParamCaption})}
+
+
+
+停止电机 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{motor_8h_a37364adca79243dca139090c6515f0c9}\index{motor.h@{motor.h}!Motor\_ToggleDirection@{Motor\_ToggleDirection}}
+\index{Motor\_ToggleDirection@{Motor\_ToggleDirection}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{Motor\_ToggleDirection()}{Motor\_ToggleDirection()}}
+{\footnotesize\ttfamily \label{motor_8h_a37364adca79243dca139090c6515f0c9} 
+void Motor\+\_\+\+Toggle\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_motor___handle_type_def}{Motor\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}}]{motor}{}\end{DoxyParamCaption})}
+
+
+
+切换电机方向 
+
+
+\begin{DoxyParams}{参数}
+{\em motor} & 电机结构体指针 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}

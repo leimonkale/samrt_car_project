@@ -1,0 +1,150 @@
+\doxysection{uart.\+h 文件参考}
+\hypertarget{uart_8h}{}\label{uart_8h}\index{uart.h@{uart.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uart_8h_ae8ca773c338f9e90fed5eeb81fc64a7f}{uart\+\_\+init}} (int Baud\+Rate)
+\begin{DoxyCompactList}\small\item\em 初始化串口 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a4c807af15160395508dd6069ceacc239}{uart\+\_\+send\+\_\+byte}} (char data)
+\begin{DoxyCompactList}\small\item\em 串口发送字符 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a1039f80b9e4096f21c36745da1262d31}{uart\+\_\+send\+\_\+str}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em 串口发送字符串 \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{uart_8h_a2578a320d89c6a636bf2bdaf57cc1580}{uart\+\_\+recv\+\_\+byte}} (void)
+\item 
+void \mbox{\hyperlink{uart_8h_ab17f9fef41d32b6a1021eb1520659218}{uart\+\_\+get\+\_\+recvbuf}} (unsigned char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{uart_8c_ac72e2732d23d7d9657647ac406c539f3}{buf}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_aeaec577a45a60c5a5d99ea4d44898075}{flag2}}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_a09c08a857a3574a7aae52d8cf4f8c384}{flag3}}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_aea72e241c700c39ee7d2e16696f16fcf}{flag4}}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_a042c180616c014e91d82bab9b47c0290}{flag5}}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_ac5f4d14af23b5194a6483bea010f2ea7}{flag6}}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_af15b132d76e1db350c4c51ba440df429}{flag7}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{uart_8h_doc-func-members}
+\doxysubsection{函数说明}
+\Hypertarget{uart_8h_ab17f9fef41d32b6a1021eb1520659218}\index{uart.h@{uart.h}!uart\_get\_recvbuf@{uart\_get\_recvbuf}}
+\index{uart\_get\_recvbuf@{uart\_get\_recvbuf}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_get\_recvbuf()}{uart\_get\_recvbuf()}}
+{\footnotesize\ttfamily \label{uart_8h_ab17f9fef41d32b6a1021eb1520659218} 
+void uart\+\_\+get\+\_\+recvbuf (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{buf}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8h_ae8ca773c338f9e90fed5eeb81fc64a7f}\index{uart.h@{uart.h}!uart\_init@{uart\_init}}
+\index{uart\_init@{uart\_init}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_init()}{uart\_init()}}
+{\footnotesize\ttfamily \label{uart_8h_ae8ca773c338f9e90fed5eeb81fc64a7f} 
+void uart\+\_\+init (\begin{DoxyParamCaption}\item[{int}]{Baud\+Rate}{}\end{DoxyParamCaption})}
+
+
+
+初始化串口 
+
+
+\begin{DoxyParams}{参数}
+{\em 波特率} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{uart_8h_a2578a320d89c6a636bf2bdaf57cc1580}\index{uart.h@{uart.h}!uart\_recv\_byte@{uart\_recv\_byte}}
+\index{uart\_recv\_byte@{uart\_recv\_byte}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_recv\_byte()}{uart\_recv\_byte()}}
+{\footnotesize\ttfamily \label{uart_8h_a2578a320d89c6a636bf2bdaf57cc1580} 
+unsigned char uart\+\_\+recv\+\_\+byte (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{uart_8h_a4c807af15160395508dd6069ceacc239}\index{uart.h@{uart.h}!uart\_send\_byte@{uart\_send\_byte}}
+\index{uart\_send\_byte@{uart\_send\_byte}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_byte()}{uart\_send\_byte()}}
+{\footnotesize\ttfamily \label{uart_8h_a4c807af15160395508dd6069ceacc239} 
+void uart\+\_\+send\+\_\+byte (\begin{DoxyParamCaption}\item[{char}]{data}{}\end{DoxyParamCaption})}
+
+
+
+串口发送字符 
+
+
+\begin{DoxyParams}{参数}
+{\em 单个字符} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{uart_8h_a1039f80b9e4096f21c36745da1262d31}\index{uart.h@{uart.h}!uart\_send\_str@{uart\_send\_str}}
+\index{uart\_send\_str@{uart\_send\_str}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_send\_str()}{uart\_send\_str()}}
+{\footnotesize\ttfamily \label{uart_8h_a1039f80b9e4096f21c36745da1262d31} 
+void uart\+\_\+send\+\_\+str (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+串口发送字符串 
+
+
+\begin{DoxyParams}{参数}
+{\em 字符串} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{返回值}
+{\em 无} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\label{doc-var-members}
+\Hypertarget{uart_8h_doc-var-members}
+\doxysubsection{变量说明}
+\Hypertarget{uart_8h_aeaec577a45a60c5a5d99ea4d44898075}\index{uart.h@{uart.h}!flag2@{flag2}}
+\index{flag2@{flag2}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag2}{flag2}}
+{\footnotesize\ttfamily \label{uart_8h_aeaec577a45a60c5a5d99ea4d44898075} 
+volatile int flag2\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{uart_8h_a09c08a857a3574a7aae52d8cf4f8c384}\index{uart.h@{uart.h}!flag3@{flag3}}
+\index{flag3@{flag3}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag3}{flag3}}
+{\footnotesize\ttfamily \label{uart_8h_a09c08a857a3574a7aae52d8cf4f8c384} 
+volatile int flag3\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{uart_8h_aea72e241c700c39ee7d2e16696f16fcf}\index{uart.h@{uart.h}!flag4@{flag4}}
+\index{flag4@{flag4}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag4}{flag4}}
+{\footnotesize\ttfamily \label{uart_8h_aea72e241c700c39ee7d2e16696f16fcf} 
+volatile int flag4\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{uart_8h_a042c180616c014e91d82bab9b47c0290}\index{uart.h@{uart.h}!flag5@{flag5}}
+\index{flag5@{flag5}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag5}{flag5}}
+{\footnotesize\ttfamily \label{uart_8h_a042c180616c014e91d82bab9b47c0290} 
+volatile int flag5\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{uart_8h_ac5f4d14af23b5194a6483bea010f2ea7}\index{uart.h@{uart.h}!flag6@{flag6}}
+\index{flag6@{flag6}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag6}{flag6}}
+{\footnotesize\ttfamily \label{uart_8h_ac5f4d14af23b5194a6483bea010f2ea7} 
+volatile int flag6\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{uart_8h_af15b132d76e1db350c4c51ba440df429}\index{uart.h@{uart.h}!flag7@{flag7}}
+\index{flag7@{flag7}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{flag7}{flag7}}
+{\footnotesize\ttfamily \label{uart_8h_af15b132d76e1db350c4c51ba440df429} 
+volatile int flag7\hspace{0.3cm}{\ttfamily [extern]}}
+

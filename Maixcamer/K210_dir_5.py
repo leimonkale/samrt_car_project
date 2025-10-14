@@ -13,8 +13,8 @@ roi = [0, 100, 320, 16]      # 检测区域（中间偏下）
 center_line = 160            # 屏幕中线位置
 LEFT_THRESHOLD = -30         # 左偏阈值
 RIGHT_THRESHOLD = 30         # 右偏阈值
-LEFT_WIDTH_THRESHOLD = 60    # 左侧色块宽度阈值（超过则左转）
-RIGHT_WIDTH_THRESHOLD = 60   # 右侧色块宽度阈值（超过则右转）
+LEFT_WIDTH_THRESHOLD = 140    # 左侧色块宽度阈值（超过则左转）
+RIGHT_WIDTH_THRESHOLD = 140  # 右侧色块宽度阈值（超过则右转）
 
 # 初始化
 lcd.init()
